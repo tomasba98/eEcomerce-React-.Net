@@ -1,6 +1,6 @@
-# eEcomerce-React-.Net 
+# eEcomerce API-REST | ReactJs + .Net 
 Api funcional. ✔️
-Client falta. ❌
+Cliente falta. ❌
 
 Proyecto de un eEcomerce. Proporciona la funcionalidad principal para administrar productos, órdenes y usuarios.
 
