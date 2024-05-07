@@ -1,4 +1,6 @@
-# eEcomerce-React-.Net (EnProceso)
+# eEcomerce-React-.Net 
+Api funcional. ✔️
+Client falta. ❌
 
 Proyecto de un eEcomerce. Proporciona la funcionalidad principal para administrar productos, órdenes y usuarios.
 
