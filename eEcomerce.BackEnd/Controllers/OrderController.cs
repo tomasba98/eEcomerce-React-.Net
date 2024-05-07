@@ -1,6 +1,7 @@
 ﻿using eEcomerce.BackEnd.Entities.Order;
 using eEcomerce.BackEnd.Entities.OrderProduct;
 using eEcomerce.BackEnd.Entities.Product;
+using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Order;
 using eEcomerce.BackEnd.Models.OrderProduct;
 using eEcomerce.BackEnd.Models.Product;
@@ -25,7 +26,7 @@ public class OrderController : ControllerBase
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IUserService _userService;
     private readonly IOrderService _orderService;
-    private readonly IOrderProductService _oderProdcutService;
+    private readonly IOrderProductService _orderProdcutService;
 
     public OrderController(IProductService productService, IHttpContextAccessor httpContextAccessor, IUserService userService, IOrderService orderService, IOrderProductService orderProductService)
     {
@@ -33,7 +34,7 @@ public class OrderController : ControllerBase
         _httpContextAccessor = httpContextAccessor;
         _userService = userService;
         _orderService = orderService;
-        _oderProdcutService = orderProductService;
+        _orderProdcutService = orderProductService;
     }
 
     private int? GetUserIdFromToken()
@@ -88,7 +89,7 @@ public class OrderController : ControllerBase
         {
             Quantity = orderProducts.Quantity,
             ProductValue = orderProducts.ProductValue,
-            proudct = MapToDto_Product(GetProductById(orderProducts.ProductId))
+            Proudct = MapToDto_Product(GetProductById(orderProducts.ProductId))
 
         };
     }
@@ -119,34 +120,67 @@ public class OrderController : ControllerBase
             return BadRequest();
         }
 
-        IEnumerable<OrderProduct> orderProducts = _oderProdcutService.GetOrderProducts_ByOrderId(orderId);
+        IEnumerable<OrderProduct> orderProducts = _orderProdcutService.GetOrderProducts_ByOrderId(orderId);
         IEnumerable<OrderProductResponse> result = orderProducts.Select(ordProd => MapToDtoOrder_ProductResponse(ordProd)).ToList();
 
         return Ok(result);
     }
 
-    //[HttpPost("user/create-order")]
-    //[Authorize]
-    //public ActionResult<OrderRequest> CreateUserOrder(OrderRequest orderRequest)
-    //{
-    //    int? userId = GetUserIdFromToken();
+    [HttpPost("user/create-order")]
+    [Authorize]
+    public ActionResult<OrderRequest> CreateUserOrder(OrderRequest orderRequest)
+    {
+        int? userId = GetUserIdFromToken();
+        User? user = _userService.GetUserById(userId.Value);
 
-    //    if (!userId.HasValue || !ValidateUserId(userId.Value))
-    //    {
-    //        return BadRequest();
-    //    }
-    //    int Quantity = orderRequest.OrderProducts.Count();
-    //    User? user = _userService.GetUserById(userId.Value);
-    //    Order order = new(orderProduct, user);
-    //    OrderProduct orderProduct = new(orderRequest)
+        if (!userId.HasValue || user is null)
+        {
+            return BadRequest();
+        }
 
-    //    Order createdOrder = _orderService.CreateOrder(order);
-    //    if (createdOrder == null)
-    //    {
-    //        return BadRequest("Can't create the task");
-    //    }
 
-    //    return Ok(MapToDto(createdOrder));
-    //}
+        Product product;
+        decimal totalOrderPrice = 0;
+        foreach (OrderProductRequest productOrder in orderRequest.ListOrderProducts)
+        {
+            product = GetProductById(productOrder.ProductId);
+
+            if (product is null)
+            {
+                return BadRequest();
+            }
+
+            totalOrderPrice += product.Price * productOrder.Quantity;
+        }
+
+        int QuantityProducts = orderRequest.ListOrderProducts.Count;
+
+
+        Order order = new(totalOrderPrice, user, QuantityProducts);
+        Order createdOrder = _orderService.CreateOrder(order);
+        if (createdOrder is null)
+        {
+            return BadRequest("Can't create the Order");
+        }
+
+        foreach (OrderProductRequest productOrder in orderRequest.ListOrderProducts)
+        {
+            product = GetProductById(productOrder.ProductId);
+            if (product is null)
+            {
+                return BadRequest("Product not found");
+            }
+
+            OrderProduct orderProduct = new(productOrder.Quantity, order, product);
+            OrderProduct createdOrderProduct = _orderProdcutService.CreateOrderProduct(orderProduct);
+            if (createdOrderProduct is null)
+            {
+                return BadRequest("Can't create the OrderProduct");
+            }
+        }
+
+
+        return Ok(MapToDto_OrderResponse(createdOrder));
+    }
 
 }

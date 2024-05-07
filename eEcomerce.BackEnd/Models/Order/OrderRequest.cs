@@ -1,8 +1,7 @@
-﻿using eEcomerce.BackEnd.Models.Product;
+﻿namespace eEcomerce.BackEnd.Models.Order;
 
-namespace eEcomerce.BackEnd.Models.Order;
-
+using eEcomerce.BackEnd.Models.OrderProduct;
 public class OrderRequest
 {
-    public ICollection<ProductResponse> OrderProducts { get; set; } = new List<ProductResponse>();
+    public ICollection<OrderProductRequest> ListOrderProducts { get; set; } = new List<OrderProductRequest>();
 }

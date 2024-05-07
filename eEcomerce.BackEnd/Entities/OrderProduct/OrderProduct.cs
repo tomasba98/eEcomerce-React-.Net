@@ -28,12 +28,12 @@ public class OrderProduct : EntityBase
 
     [Required]
     [Column("OrderId")]
-    public required Order Order { get; set; }
+    public Order Order { get; set; }
     public int OrderId { get; set; }
 
     [Required]
     [Column("ProductId")]
-    public required Product Product { get; set; }
+    public Product Product { get; set; }
     public int ProductId { get; set; }
 
 }

@@ -9,5 +9,5 @@ public class OrderProductResponse
 
     public decimal ProductValue { get; set; }
 
-    public ProductResponse proudct { get; set; }
+    public ProductResponse Proudct { get; set; }
 }

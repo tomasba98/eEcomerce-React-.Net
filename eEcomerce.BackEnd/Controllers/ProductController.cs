@@ -48,12 +48,7 @@ public class ProductController : ControllerBase
         return true;
     }
 
-    private Product? GetProductById(int productId)
-    {
-        return _productService.GetProductById(productId);
-    }
-
-    private ProductResponse MapToDto(Product product)
+    private static ProductResponse MapToDto(Product product)
     {
         return new ProductResponse
         {

@@ -5,19 +5,19 @@ namespace eEcomerce.BackEnd.Entities.Order;
 
 using eEcomerce.BackEnd.Entities.OrderProduct;
 using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Models.Order;
 
 [Table("Orders")]
 public class Order : EntityBase
 {
     public Order() { }
 
-    public Order(ICollection<OrderRequest> orderProducts, User user)
+    public Order(decimal totalPrice, User user, int totalQuantityProducts)
     {
-        DatePurchase = DateTime.Now;
+        DatePurchase = DateTime.UtcNow;
         User = user;
         UserId = user.Id;
-        TotalPrice = orderProducts.Sum(op => op. * op.Quantity);
+        TotalPrice = totalPrice;
+        TotalQuantityProducts = totalQuantityProducts;
     }
 
     [Required]
@@ -25,6 +25,9 @@ public class Order : EntityBase
 
     [Required]
     public decimal TotalPrice { get; set; }
+
+    [Required]
+    public int TotalQuantityProducts { get; set; }
 
     public virtual ICollection<OrderProduct> OrderProducts { get; set; } = [];
 

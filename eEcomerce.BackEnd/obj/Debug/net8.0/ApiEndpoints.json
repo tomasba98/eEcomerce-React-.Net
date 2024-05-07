@@ -53,6 +53,32 @@
   },
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
+    "Method": "CreateUserOrder",
+    "RelativePath": "api/Order/user/create-order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderRequest",
+        "Type": "eEcomerce.BackEnd.Models.Order.OrderRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "eEcomerce.BackEnd.Models.Order.OrderRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
     "Method": "GetUserOrdersList",
     "RelativePath": "api/Order/user/orders",
     "HttpMethod": "GET",
