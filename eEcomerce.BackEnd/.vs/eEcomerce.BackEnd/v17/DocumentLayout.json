@@ -190,8 +190,7 @@
               "ViewState": "AQIAAA0AAAAAAAAAAAAUwCIAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-24T14:31:59.241Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -244,8 +243,7 @@
               "RelativeToolTip": "Models\\Order\\OrderResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T18:35:53.698Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T18:35:53.698Z"
             },
             {
               "$type": "Document",
@@ -729,7 +727,7 @@
               "RelativeDocumentMoniker": "Services\\Product\\Implementation\\ProductService.cs",
               "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Product\\Implementation\\ProductService.cs",
               "RelativeToolTip": "Services\\Product\\Implementation\\ProductService.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAA7wCkAAAAFAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAcwCkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-04T20:24:20.173Z",
               "EditorCaption": ""

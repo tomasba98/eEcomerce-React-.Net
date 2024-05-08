@@ -21,5 +21,12 @@ El proyecto está desarrollado en C# utilizando ASP.NET Core como framework prin
 - PostgreSql
 - Swagger para documentación de la API
 
-## Class Diagrams
+## Diagramas UML
+Diagrama de clases de la arquitectura de la API.
 ![ENTITIES!](UML/Entities.png)
+![SERVICES!](UML/Services.png)
+![CONTROLLERS!](UML/Controllers.png)
+
+DER de la base de Datos 
+![DER!](UML/DER.png)
+
