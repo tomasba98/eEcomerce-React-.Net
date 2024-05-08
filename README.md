@@ -22,4 +22,4 @@ El proyecto está desarrollado en C# utilizando ASP.NET Core como framework prin
 - Swagger para documentación de la API
 
 ## Class Diagrams
-![ENTITIES!](UML\Entities.png)
+![ENTITIES!](UML/Entities.png)
