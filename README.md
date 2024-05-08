@@ -18,3 +18,6 @@ El proyecto está desarrollado en C# utilizando ASP.NET Core como framework prin
 - Entity Framework Core (EF Core)
 - PostgreSql
 - Swagger para documentación de la API
+
+## Class Diagrams
+![ENTITIES!](UML\Entities.png)
