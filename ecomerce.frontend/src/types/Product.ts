@@ -5,5 +5,5 @@ export type Product = {
     description: string;
     price: number;
     brand: string;
-    categoryId: number;
+    categoryId: string;
 }
