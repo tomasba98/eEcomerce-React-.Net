@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\models\\order\\orderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:models\\order\\orderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\services\\product\\implementation\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:services\\product\\implementation\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\models\\order\\orderresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:models\\order\\orderresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\services\\category\\implementation\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:services\\category\\implementation\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\entities\\product\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:entities\\product\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\services\\dataaccesslayer\\implementation\\genericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:services\\dataaccesslayer\\implementation\\genericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\services\\dataaccesslayer\\implementation\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:services\\dataaccesslayer\\implementation\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\models\\orderproduct\\orderproductrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,16 +35,20 @@
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:models\\orderproduct\\orderproductresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\models\\product\\productresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:models\\product\\productresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\models\\product\\productrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:models\\product\\productrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\models\\order\\orderresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:models\\order\\orderresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\models\\authentication\\authenticationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,10 +63,6 @@
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:entities\\productcomment\\productcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\entities\\product\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:entities\\product\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\entities\\orderproduct\\orderproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:entities\\orderproduct\\orderproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -67,20 +71,8 @@
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:entities\\order\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\services\\category\\implementation\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:services\\category\\implementation\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\entities\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:entities\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\services\\dataaccesslayer\\implementation\\genericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:services\\dataaccesslayer\\implementation\\genericdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\services\\dataaccesslayer\\implementation\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|solutionrelative:services\\dataaccesslayer\\implementation\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D45D4594-51F8-402F-9A2E-1CFFCE90F73C}|eEcomerce.BackEnd.csproj|f:\\programacion\\eecomerce\\eecomerce.backend\\entities\\user\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -177,11 +169,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -222,68 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OrderRequest.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Order\\OrderRequest.cs",
-              "RelativeDocumentMoniker": "Models\\Order\\OrderRequest.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Order\\OrderRequest.cs",
-              "RelativeToolTip": "Models\\Order\\OrderRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T21:02:38.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderResponse.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Order\\OrderResponse.cs",
-              "RelativeDocumentMoniker": "Models\\Order\\OrderResponse.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Order\\OrderResponse.cs",
-              "RelativeToolTip": "Models\\Order\\OrderResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T18:35:53.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrderProductRequest.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\OrderProduct\\OrderProductRequest.cs",
-              "RelativeDocumentMoniker": "Models\\OrderProduct\\OrderProductRequest.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\OrderProduct\\OrderProductRequest.cs",
-              "RelativeToolTip": "Models\\OrderProduct\\OrderProductRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T20:12:30.708Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAswDAAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T21:00:44.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Controllers\\OrderController.cs",
-              "ViewState": "AQIAAHkAAAAAAAAAAAAxwJgAAABFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T00:27:51.543Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "OrderProductResponse.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\OrderProduct\\OrderProductResponse.cs",
               "RelativeDocumentMoniker": "Models\\OrderProduct\\OrderProductResponse.cs",
@@ -291,7 +222,8 @@
               "RelativeToolTip": "Models\\OrderProduct\\OrderProductResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T21:07:55.264Z"
+              "WhenOpened": "2024-05-06T21:07:55.264Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -303,7 +235,99 @@
               "RelativeToolTip": "Models\\Product\\ProductResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T19:03:17.7Z"
+              "WhenOpened": "2024-05-01T19:03:17.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GenericService.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "RelativeDocumentMoniker": "Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "RelativeToolTip": "Services\\DataAccessLayer\\Implementation\\GenericService.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAQwBEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T19:47:15.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GenericDao.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "RelativeDocumentMoniker": "Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "RelativeToolTip": "Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAA3wFQAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T17:22:47.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Product.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\Product\\Product.cs",
+              "RelativeDocumentMoniker": "Entities\\Product\\Product.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\Product\\Product.cs",
+              "RelativeToolTip": "Entities\\Product\\Product.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAcwBIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T22:50:47.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Category\\Implementation\\CategoryService.cs",
+              "RelativeDocumentMoniker": "Services\\Category\\Implementation\\CategoryService.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Category\\Implementation\\CategoryService.cs",
+              "RelativeToolTip": "Services\\Category\\Implementation\\CategoryService.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAA6wCkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T21:18:28.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Controllers\\OrderController.cs",
+              "ViewState": "AQIAAJ0AAAAAAAAAAAAQwIkAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T00:27:51.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAAAKcAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T21:00:44.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrderProductRequest.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\OrderProduct\\OrderProductRequest.cs",
+              "RelativeDocumentMoniker": "Models\\OrderProduct\\OrderProductRequest.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\OrderProduct\\OrderProductRequest.cs",
+              "RelativeToolTip": "Models\\OrderProduct\\OrderProductRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T20:12:30.708Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -315,11 +339,24 @@
               "RelativeToolTip": "Models\\Product\\ProductRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T01:22:03.589Z"
+              "WhenOpened": "2024-05-04T01:22:03.589Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "OrderResponse.cs",
+              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Order\\OrderResponse.cs",
+              "RelativeDocumentMoniker": "Models\\Order\\OrderResponse.cs",
+              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Order\\OrderResponse.cs",
+              "RelativeToolTip": "Models\\Order\\OrderResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T18:35:53.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "AuthenticationResponse.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Authentication\\AuthenticationResponse.cs",
               "RelativeDocumentMoniker": "Models\\Authentication\\AuthenticationResponse.cs",
@@ -331,19 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Product.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\Product\\Product.cs",
-              "RelativeDocumentMoniker": "Entities\\Product\\Product.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\Product\\Product.cs",
-              "RelativeToolTip": "Entities\\Product\\Product.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T22:50:47.08Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "OrderProduct.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\OrderProduct\\OrderProduct.cs",
               "RelativeDocumentMoniker": "Entities\\OrderProduct\\OrderProduct.cs",
@@ -355,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Order.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\Order\\Order.cs",
               "RelativeDocumentMoniker": "Entities\\Order\\Order.cs",
@@ -367,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "ProductComment.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\ProductComment\\ProductComment.cs",
               "RelativeDocumentMoniker": "Entities\\ProductComment\\ProductComment.cs",
@@ -379,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "AccessRequest.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Authentication\\AccessRequest.cs",
               "RelativeDocumentMoniker": "Models\\Authentication\\AccessRequest.cs",
@@ -388,18 +413,6 @@
               "ViewState": "AQIAAAUAAAAAAAAAAAA0wA8AAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-24T14:43:00.584Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Category\\Implementation\\CategoryService.cs",
-              "RelativeDocumentMoniker": "Services\\Category\\Implementation\\CategoryService.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Category\\Implementation\\CategoryService.cs",
-              "RelativeToolTip": "Services\\Category\\Implementation\\CategoryService.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAcwCMAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T21:18:28.862Z"
             },
             {
               "$type": "Document",
@@ -416,30 +429,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "GenericDao.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
-              "RelativeDocumentMoniker": "Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
-              "RelativeToolTip": "Services\\DataAccessLayer\\Implementation\\GenericDao.cs",
-              "ViewState": "AQIAAGsAAAAAAAAAAAAzwIgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T17:22:47.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "GenericService.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
-              "RelativeDocumentMoniker": "Services\\DataAccessLayer\\Implementation\\GenericService.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\Implementation\\GenericService.cs",
-              "RelativeToolTip": "Services\\DataAccessLayer\\Implementation\\GenericService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T19:47:15.761Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
               "Title": "User.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\User\\User.cs",
               "RelativeDocumentMoniker": "Entities\\User\\User.cs",
@@ -451,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 19,
               "Title": "20240507193218_Fifth-Migration.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Migrations\\20240507193218_Fifth-Migration.cs",
               "RelativeDocumentMoniker": "Migrations\\20240507193218_Fifth-Migration.cs",
@@ -463,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 20,
               "Title": "Encrypt.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Utils\\Encrypt.cs",
               "RelativeDocumentMoniker": "Utils\\Encrypt.cs",
@@ -475,7 +464,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 21,
               "Title": "IProductService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Product\\IProductService.cs",
               "RelativeDocumentMoniker": "Services\\Product\\IProductService.cs",
@@ -487,7 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 22,
               "Title": "OrderProductService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\OrderProduct\\Implementation\\OrderProductService.cs",
               "RelativeDocumentMoniker": "Services\\OrderProduct\\Implementation\\OrderProductService.cs",
@@ -499,7 +488,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 23,
               "Title": "OrderService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Order\\Implementation\\OrderService.cs",
               "RelativeDocumentMoniker": "Services\\Order\\Implementation\\OrderService.cs",
@@ -511,7 +500,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 24,
               "Title": "IOrderService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Order\\IOrderService.cs",
               "RelativeDocumentMoniker": "Services\\Order\\IOrderService.cs",
@@ -523,7 +512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 25,
               "Title": "Category.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Entities\\Category\\Category.cs",
               "RelativeDocumentMoniker": "Entities\\Category\\Category.cs",
@@ -535,7 +524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 26,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Context\\AppDbContext.cs",
@@ -547,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 27,
               "Title": "CategoryModel.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Models\\Category\\CategoryModel.cs",
               "RelativeDocumentMoniker": "Models\\Category\\CategoryModel.cs",
@@ -559,7 +548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 28,
               "Title": "ICategoryService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Category\\ICategoryService.cs",
               "RelativeDocumentMoniker": "Services\\Category\\ICategoryService.cs",
@@ -571,7 +560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 29,
               "Title": "UserService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\User\\Implementation\\UserService.cs",
               "RelativeDocumentMoniker": "Services\\User\\Implementation\\UserService.cs",
@@ -583,7 +572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 30,
               "Title": "AuthenticationController.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Controllers\\AuthenticationController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
@@ -595,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 31,
               "Title": "IGenericService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\IGenericService.cs",
               "RelativeDocumentMoniker": "Services\\DataAccessLayer\\IGenericService.cs",
@@ -607,7 +596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 33,
               "Title": "IGenericDao.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\DataAccessLayer\\IGenericDao.cs",
               "RelativeDocumentMoniker": "Services\\DataAccessLayer\\IGenericDao.cs",
@@ -619,7 +608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 32,
               "Title": "IUserService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\User\\IUserService.cs",
               "RelativeDocumentMoniker": "Services\\User\\IUserService.cs",
@@ -631,7 +620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 35,
               "Title": "AuthenticationService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Authentication\\Implementation\\AuthenticationService.cs",
               "RelativeDocumentMoniker": "Services\\Authentication\\Implementation\\AuthenticationService.cs",
@@ -643,7 +632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 34,
               "Title": "IAuthenticationService.cs",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Authentication\\IAuthenticationService.cs",
               "RelativeDocumentMoniker": "Services\\Authentication\\IAuthenticationService.cs",
@@ -655,7 +644,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 39,
               "Title": "Container.targets",
               "DocumentMoniker": "C:\\Users\\tomas\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets",
               "ToolTip": "C:\\Users\\tomas\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\build\\Container.targets",
@@ -665,7 +654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 38,
               "Title": "eEcomerce.BackEnd",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj",
               "RelativeDocumentMoniker": "eEcomerce.BackEnd.csproj",
@@ -676,7 +665,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 36,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -688,7 +677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 37,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -697,40 +686,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-04-24T15:03:13.267Z"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "9cb456ea-3270-45f7-becd-0684803f4964",
-        "Display": 1,
-        "X": 324,
-        "Y": 22,
-        "Width": 1507,
-        "Height": 1030,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Product\\Implementation\\ProductService.cs",
-              "RelativeDocumentMoniker": "Services\\Product\\Implementation\\ProductService.cs",
-              "ToolTip": "F:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\Services\\Product\\Implementation\\ProductService.cs",
-              "RelativeToolTip": "Services\\Product\\Implementation\\ProductService.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAcwCkAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T20:24:20.173Z",
-              "EditorCaption": ""
             }
           ]
         }

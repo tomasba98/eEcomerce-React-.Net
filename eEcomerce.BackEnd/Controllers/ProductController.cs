@@ -86,7 +86,7 @@ public class ProductController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("user/create-product")]
+    [HttpPost("user/product")]
     [Authorize]
     public ActionResult<ProductResponse> CreateProduct(ProductRequest productRequest, char categoryLetter)
     {
@@ -110,11 +110,70 @@ public class ProductController : ControllerBase
         Product createdProduct = _productService.CreateProduct(product);
         if (createdProduct == null)
         {
-            return BadRequest("Can't create the task");
+            return BadRequest("Can't create the product");
         }
 
         return Ok(MapToDto(createdProduct));
     }
 
+    [HttpPut("user/product/{productId}")]
+    [Authorize]
+    public async Task<ActionResult<ProductResponse>> UpdateProduct(ProductRequest productRequest, char categoryLetter, int productId)
+    {
+        int? userId = GetUserIdFromToken();
 
+        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        {
+            return BadRequest();
+        }
+        Category category = _categoryService.GetCategoryByLetter(categoryLetter);
+        User? user = _userService.GetUserById(userId.Value);
+        Product? product = _productService.GetProductById(productId);
+
+        if (user is null || category is null || product is null)
+        {
+            return BadRequest();
+        }
+
+        product.Name = productRequest.Name;
+        product.Description = productRequest.Description;
+        product.Price = productRequest.Price;
+        product.Brand = productRequest.Brand;
+        product.Category = category;
+
+        bool result = await _productService.UpdateProduct(product);
+        if (!result)
+        {
+            return BadRequest();
+        }
+
+        return Ok();
+    }
+
+    [HttpDelete("user/product/{productId}")]
+    [Authorize]
+    public async Task<ActionResult<ProductResponse>> DeleteProduct(int productId)
+    {
+        int? userId = GetUserIdFromToken();
+
+        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        {
+            return BadRequest();
+        }
+        User? user = _userService.GetUserById(userId.Value);
+        Product? product = _productService.GetProductById(productId);
+
+        if (user is null || product is null || product.User.Id != user.Id)
+        {
+            return BadRequest();
+        }
+
+        bool result = await _productService.DeleteProduct(product);
+        if (!result)
+        {
+            return BadRequest();
+        }
+
+        return Ok();
+    }
 }

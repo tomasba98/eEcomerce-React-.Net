@@ -16,7 +16,13 @@ const SidebarProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <SidebarContext.Provider value={{ isOpen, setIsOpen, handleClose }}>
+    <SidebarContext.Provider
+      value={{
+        isOpen: isOpen,
+        setIsOpen: setIsOpen,
+        handleClose: handleClose
+      }}
+    >
       {children}
     </SidebarContext.Provider>
   );

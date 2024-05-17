@@ -146,7 +146,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "CreateProduct",
-    "RelativePath": "api/Product/user/create-product",
+    "RelativePath": "api/Product/user/product",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -160,6 +160,68 @@
         "Name": "categoryLetter",
         "Type": "System.Char",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "eEcomerce.BackEnd.Models.Product.ProductResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
+    "Method": "UpdateProduct",
+    "RelativePath": "api/Product/user/product/{productId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productRequest",
+        "Type": "eEcomerce.BackEnd.Models.Product.ProductRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "categoryLetter",
+        "Type": "System.Char",
+        "IsRequired": false
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "eEcomerce.BackEnd.Models.Product.ProductResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
+    "Method": "DeleteProduct",
+    "RelativePath": "api/Product/user/product/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
