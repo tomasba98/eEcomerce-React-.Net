@@ -39,7 +39,7 @@ public class OrderController : ControllerBase
 
     private int? GetUserIdFromToken()
     {
-        Claim userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
+        Claim? userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
         if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
         {
             return null;
@@ -56,7 +56,7 @@ public class OrderController : ControllerBase
         return true;
     }
 
-    private Product GetProductById(int productId)
+    private Product? GetProductById(int productId)
     {
         return _productService.GetProductById(productId);
     }
@@ -94,7 +94,7 @@ public class OrderController : ControllerBase
         };
     }
 
-    [HttpGet("user/orders")]
+    [HttpGet("user")]
     [Authorize]
     public ActionResult<IEnumerable<OrderResponse>> GetUserOrdersList()
     {
@@ -110,7 +110,7 @@ public class OrderController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("user/orders/{orderId}")]
+    [HttpGet("user/{orderId}")]
     [Authorize]
     public ActionResult<IEnumerable<OrderProductResponse>> GetUserOrderProductsList(int orderId)
     {
@@ -126,7 +126,7 @@ public class OrderController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("user/create-order")]
+    [HttpPost("user")]
     [Authorize]
     public ActionResult<OrderRequest> CreateUserOrder(OrderRequest orderRequest)
     {

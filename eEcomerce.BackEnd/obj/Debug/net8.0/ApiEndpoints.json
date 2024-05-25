@@ -53,8 +53,28 @@
   },
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
+    "Method": "GetUserOrdersList",
+    "RelativePath": "api/Order/user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[eEcomerce.BackEnd.Models.Order.OrderResponse, eEcomerce.BackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
     "Method": "CreateUserOrder",
-    "RelativePath": "api/Order/user/create-order",
+    "RelativePath": "api/Order/user",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -79,28 +99,8 @@
   },
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
-    "Method": "GetUserOrdersList",
-    "RelativePath": "api/Order/user/orders",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[eEcomerce.BackEnd.Models.Order.OrderResponse, eEcomerce.BackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
     "Method": "GetUserOrderProductsList",
-    "RelativePath": "api/Order/user/orders/{orderId}",
+    "RelativePath": "api/Order/user/{orderId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -126,7 +126,27 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "GetProductsList",
-    "RelativePath": "api/Product/products",
+    "RelativePath": "api/Product",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[eEcomerce.BackEnd.Models.Product.ProductResponse, eEcomerce.BackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
+    "Method": "GetUserProductsList",
+    "RelativePath": "api/Product/user",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -146,7 +166,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "CreateProduct",
-    "RelativePath": "api/Product/user/product",
+    "RelativePath": "api/Product/user",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -177,7 +197,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "UpdateProduct",
-    "RelativePath": "api/Product/user/product/{productId}",
+    "RelativePath": "api/Product/user/{productId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -213,7 +233,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "DeleteProduct",
-    "RelativePath": "api/Product/user/product/{productId}",
+    "RelativePath": "api/Product/user/{productId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -227,26 +247,6 @@
     "ReturnTypes": [
       {
         "Type": "eEcomerce.BackEnd.Models.Product.ProductResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
-    "Method": "GetUserProductsList",
-    "RelativePath": "api/Product/user/products",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[eEcomerce.BackEnd.Models.Product.ProductResponse, eEcomerce.BackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

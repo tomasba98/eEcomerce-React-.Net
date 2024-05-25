@@ -61,7 +61,7 @@ public class ProductController : ControllerBase
         };
     }
 
-    [HttpGet("products")]
+    [HttpGet]
     public ActionResult<IEnumerable<ProductResponse>> GetProductsList()
     {
         IEnumerable<Product> products = _productService.GetAllProducts();
@@ -70,7 +70,7 @@ public class ProductController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("user/products")]
+    [HttpGet("user")]
     [Authorize]
     public ActionResult<IEnumerable<ProductResponse>> GetUserProductsList()
     {
@@ -86,7 +86,7 @@ public class ProductController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("user/product")]
+    [HttpPost("user")]
     [Authorize]
     public ActionResult<ProductResponse> CreateProduct(ProductRequest productRequest, char categoryLetter)
     {
@@ -116,7 +116,7 @@ public class ProductController : ControllerBase
         return Ok(MapToDto(createdProduct));
     }
 
-    [HttpPut("user/product/{productId}")]
+    [HttpPut("user/{productId}")]
     [Authorize]
     public async Task<ActionResult<ProductResponse>> UpdateProduct(ProductRequest productRequest, char categoryLetter, int productId)
     {
@@ -150,7 +150,7 @@ public class ProductController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("user/product/{productId}")]
+    [HttpDelete("user/{productId}")]
     [Authorize]
     public async Task<ActionResult<ProductResponse>> DeleteProduct(int productId)
     {

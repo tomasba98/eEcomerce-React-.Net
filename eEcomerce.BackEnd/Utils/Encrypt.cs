@@ -21,10 +21,7 @@ namespace eEcomerce.BackEnd.Utils
         /// <returns>The generated JWT token.</returns>
         public static string GenerateToken(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
+            ArgumentNullException.ThrowIfNull(user);
 
             byte[] keyBytes = Encoding.UTF8.GetBytes("!£@0#y~9I1.p0goq1£1+12345678901234567890123456789012");
 
