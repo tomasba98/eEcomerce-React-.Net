@@ -29,19 +29,19 @@ public class ProductController : ControllerBase
         _categoryService = categoryService;
     }
 
-    private int? GetUserIdFromToken()
+    private Guid? GetUserIdFromToken()
     {
         Claim userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
-        if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
         {
             return null;
         }
         return userId;
     }
 
-    private bool ValidateUserId(int userId)
+    private bool ValidateUserId(Guid? userId)
     {
-        if (_userService.GetUserById(userId) == null)
+        if (userId == null || _userService.GetUserById((Guid) userId) == null)
         {
             return false;
         }
@@ -74,13 +74,14 @@ public class ProductController : ControllerBase
     [Authorize]
     public ActionResult<IEnumerable<ProductResponse>> GetUserProductsList()
     {
-        int? userId = GetUserIdFromToken();
-        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        Guid? userId = GetUserIdFromToken();
+
+        if (!ValidateUserId(userId))
         {
             return BadRequest();
         }
 
-        IEnumerable<Product> products = _productService.GetAllProducts();
+        IEnumerable<Product> products = _productService.GetUserProducts((Guid) userId);
         IEnumerable<ProductResponse> result = products.Select(product => MapToDto(product)).ToList();
 
         return Ok(result);
@@ -90,19 +91,15 @@ public class ProductController : ControllerBase
     [Authorize]
     public ActionResult<ProductResponse> CreateProduct(ProductRequest productRequest, char categoryLetter)
     {
-        int? userId = GetUserIdFromToken();
+        Guid? userId = GetUserIdFromToken();
 
-        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        if (!ValidateUserId(userId))
         {
             return BadRequest();
         }
+        User? user = _userService.GetUserById((Guid) userId);
+
         Category category = _categoryService.GetCategoryByLetter(categoryLetter);
-        User? user = _userService.GetUserById(userId.Value);
-
-        if (user is null)
-        {
-            return BadRequest();
-        }
 
         Product product = new(productRequest.Name, productRequest.Description, productRequest.Price, productRequest.Brand, category, user);
 
@@ -118,11 +115,11 @@ public class ProductController : ControllerBase
 
     [HttpPut("user/{productId}")]
     [Authorize]
-    public async Task<ActionResult<ProductResponse>> UpdateProduct(ProductRequest productRequest, char categoryLetter, int productId)
+    public async Task<ActionResult<ProductResponse>> UpdateProduct(ProductRequest productRequest, char categoryLetter, Guid productId)
     {
-        int? userId = GetUserIdFromToken();
+        Guid? userId = GetUserIdFromToken();
 
-        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        if (!ValidateUserId(userId))
         {
             return BadRequest();
         }
@@ -152,15 +149,15 @@ public class ProductController : ControllerBase
 
     [HttpDelete("user/{productId}")]
     [Authorize]
-    public async Task<ActionResult<ProductResponse>> DeleteProduct(int productId)
+    public async Task<ActionResult<ProductResponse>> DeleteProduct(Guid productId)
     {
-        int? userId = GetUserIdFromToken();
+        Guid? userId = GetUserIdFromToken();
 
-        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        if (!ValidateUserId(userId))
         {
             return BadRequest();
         }
-        User? user = _userService.GetUserById(userId.Value);
+        User? user = _userService.GetUserById((Guid) userId);
         Product? product = _productService.GetProductById(productId);
 
         if (user is null || product is null || product.User.Id != user.Id)

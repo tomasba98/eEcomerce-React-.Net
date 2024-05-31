@@ -2,6 +2,6 @@
 
 public class OrderProductRequest
 {
-    public int Quantity { get; set; }
-    public int ProductId { get; set; }
+    public required int Quantity { get; set; }
+    public required Guid ProductId { get; set; }
 }

@@ -26,6 +26,8 @@ namespace eEcomerce.BackEnd.Services.Users
         /// </summary>
         /// <param name="userId">The identifier of the user to retrieve.</param>
         /// <returns>The user entity if found; otherwise, null.</returns>
-        User? GetUserById(int userId);
+        User? GetUserById(Guid userId);
+
+        bool CheckIfUsernameExists(string userName);
     }
 }

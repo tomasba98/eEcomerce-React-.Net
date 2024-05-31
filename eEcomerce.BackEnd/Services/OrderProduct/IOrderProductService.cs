@@ -8,7 +8,7 @@ public interface IOrderProductService
 
     OrderProduct CreateOrderProduct(OrderProduct orderProduct);
 
-    OrderProduct? GetOrderProductById(int orderProductId);
+    OrderProduct? GetOrderProductById(Guid orderProductId);
 
-    IEnumerable<OrderProduct> GetOrderProducts_ByOrderId(int orderId);
+    IEnumerable<OrderProduct> GetOrderProducts_ByOrderId(Guid orderId);
 }

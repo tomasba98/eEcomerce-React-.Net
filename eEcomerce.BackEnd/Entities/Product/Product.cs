@@ -45,11 +45,11 @@ public class Product : EntityBase
     [Column("CategoryId")]
     public virtual Category Category { get; set; }
 
-    public int CategoryId { get; set; }
+    public Guid CategoryId { get; set; }
 
     // Navigation property for the User
     [Column("UserId")]
     public virtual User User { get; set; }
 
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
 }

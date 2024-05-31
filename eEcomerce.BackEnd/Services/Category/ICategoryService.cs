@@ -5,7 +5,7 @@ public interface ICategoryService
 {
     Category CreateCategory(Category category);
 
-    Category GetCategoryById(int categoryId);
+    Category GetCategoryById(Guid categoryId);
 
     Category GetCategoryByName(string categoryName);
 

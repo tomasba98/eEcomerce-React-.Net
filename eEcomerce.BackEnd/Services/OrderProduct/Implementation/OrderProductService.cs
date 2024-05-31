@@ -19,12 +19,12 @@ public class OrderProductService : IOrderProductService
         return orderProduct;
     }
 
-    public OrderProduct? GetOrderProductById(int orderProductId)
+    public OrderProduct? GetOrderProductById(Guid orderProductId)
     {
         return _orderProductGenericService.FilterByExpression(op => op.Id == orderProductId).FirstOrDefault();
     }
 
-    public IEnumerable<OrderProduct> GetOrderProducts_ByOrderId(int orderId)
+    public IEnumerable<OrderProduct> GetOrderProducts_ByOrderId(Guid orderId)
     {
         return _orderProductGenericService.FilterByExpression(op => op.OrderId == orderId).ToList();
     }

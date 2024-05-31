@@ -34,5 +34,5 @@ public class Order : EntityBase
     [Required]
     [Column("UserId")]
     public User? User { get; set; }
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
 }

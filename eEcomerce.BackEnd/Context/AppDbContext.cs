@@ -1,8 +1,8 @@
 ﻿using eEcomerce.BackEnd.Entities.Category;
+using eEcomerce.BackEnd.Entities.Comment;
 using eEcomerce.BackEnd.Entities.Order;
 using eEcomerce.BackEnd.Entities.OrderProduct;
 using eEcomerce.BackEnd.Entities.Product;
-using eEcomerce.BackEnd.Entities.ProductComment;
 using eEcomerce.BackEnd.Entities.User;
 
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +32,6 @@ namespace eEcomerce.BackEnd.Data
 
         public virtual DbSet<OrderProduct> OrderProducts { get; set; }
 
-        public virtual DbSet<ProductComment> ProductComment { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
     }
 }

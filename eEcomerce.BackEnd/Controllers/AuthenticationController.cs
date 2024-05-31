@@ -1,5 +1,5 @@
 ﻿using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Models.UserModels;
+using eEcomerce.BackEnd.Models.Authentication;
 using eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
 using eEcomerce.BackEnd.Services.Users;
 using eEcomerce.BackEnd.Utils;
@@ -37,8 +37,12 @@ namespace eEcomerce.BackEnd.Controllers.AuthenticationController
         /// <param name="request">The registration request.</param>
         /// <returns>An action result indicating the registration status.</returns>
         [HttpPost("Register")]
-        public IActionResult Register(AccessRequest request)
+        public IActionResult Register(RegisterUserRequest request)
         {
+            if (_userService.CheckIfUsernameExists(request.UserName))
+            {
+                return BadRequest("User Alredy in use.");
+            }
             string hashPassword = Encrypt.Hash(request.Password);
             User newUser = new()
             {

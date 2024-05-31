@@ -1,8 +1,8 @@
-﻿using eEcomerce.BackEnd.Entities.User;
-
+﻿
 
 namespace eEcomerce.BackEnd.Services.Users.Implementation;
 
+using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
 
 public class UserService : IUserService
@@ -27,7 +27,7 @@ public class UserService : IUserService
         }
     }
 
-    public User? GetUserById(int userId)
+    public User? GetUserById(Guid userId)
     {
         return _userGenericService.FilterByExpression(user => user.Id == userId).FirstOrDefault();
     }
@@ -37,5 +37,9 @@ public class UserService : IUserService
         return _userGenericService.FilterByExpression(user => user.UserName == userName).FirstOrDefault();
     }
 
+    public bool CheckIfUsernameExists(string userName)
+    {
+        return _userGenericService.FilterByExpression(user => user.UserName == userName).Any();
+    }
 
 }

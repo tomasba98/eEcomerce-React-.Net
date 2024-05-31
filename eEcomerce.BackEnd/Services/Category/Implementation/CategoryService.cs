@@ -28,7 +28,7 @@ public class CategoryService : ICategoryService
         return _categoryGenericService.FindAll().ToList();
     }
 
-    public Category GetCategoryById(int categoryId)
+    public Category GetCategoryById(Guid categoryId)
     {
         return _categoryGenericService.FilterByExpression(c => c.Id == categoryId).FirstOrDefault();
     }

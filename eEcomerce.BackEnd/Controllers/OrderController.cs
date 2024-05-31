@@ -37,26 +37,27 @@ public class OrderController : ControllerBase
         _orderProdcutService = orderProductService;
     }
 
-    private int? GetUserIdFromToken()
+    private Guid? GetUserIdFromToken()
     {
-        Claim? userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
-        if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+        Claim userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
+        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
         {
             return null;
         }
         return userId;
     }
 
-    private bool ValidateUserId(int userId)
+    private bool ValidateUserId(Guid? userId)
     {
-        if (_userService.GetUserById(userId) is null)
+        if (userId is null || _userService.GetUserById((Guid) userId) is null)
         {
             return false;
         }
         return true;
     }
 
-    private Product? GetProductById(int productId)
+
+    private Product? GetProductById(Guid productId)
     {
         return _productService.GetProductById(productId);
     }
@@ -98,8 +99,9 @@ public class OrderController : ControllerBase
     [Authorize]
     public ActionResult<IEnumerable<OrderResponse>> GetUserOrdersList()
     {
-        int? userId = GetUserIdFromToken();
-        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        Guid? userId = GetUserIdFromToken();
+
+        if (!ValidateUserId(userId))
         {
             return BadRequest();
         }
@@ -112,10 +114,11 @@ public class OrderController : ControllerBase
 
     [HttpGet("user/{orderId}")]
     [Authorize]
-    public ActionResult<IEnumerable<OrderProductResponse>> GetUserOrderProductsList(int orderId)
+    public ActionResult<IEnumerable<OrderProductResponse>> GetUserOrderProductsList(Guid orderId)
     {
-        int? userId = GetUserIdFromToken();
-        if (!userId.HasValue || !ValidateUserId(userId.Value))
+        Guid? userId = GetUserIdFromToken();
+
+        if (!ValidateUserId(userId))
         {
             return BadRequest();
         }
@@ -130,14 +133,13 @@ public class OrderController : ControllerBase
     [Authorize]
     public ActionResult<OrderRequest> CreateUserOrder(OrderRequest orderRequest)
     {
-        int? userId = GetUserIdFromToken();
-        User? user = _userService.GetUserById(userId.Value);
+        Guid? userId = GetUserIdFromToken();
 
-        if (!userId.HasValue || user is null)
+        if (!ValidateUserId(userId))
         {
             return BadRequest();
         }
-
+        User? user = _userService.GetUserById((Guid) userId);
 
         Product product;
         decimal totalOrderPrice = 0;
@@ -153,10 +155,10 @@ public class OrderController : ControllerBase
             totalOrderPrice += product.Price * productOrder.Quantity;
         }
 
-        int QuantityProducts = orderRequest.ListOrderProducts.Count;
+        int totalProducts = orderRequest.ListOrderProducts.Sum(p => p.Quantity);
 
 
-        Order order = new(totalOrderPrice, user, QuantityProducts);
+        Order order = new(totalOrderPrice, user, totalProducts);
         Order createdOrder = _orderService.CreateOrder(order);
         if (createdOrder is null)
         {

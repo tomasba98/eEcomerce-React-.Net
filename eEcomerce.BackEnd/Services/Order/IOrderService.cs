@@ -6,7 +6,7 @@ public interface IOrderService
 {
     public Order CreateOrder(Order order);
 
-    Order? GetOrderById(int productId);
+    Order? GetOrderById(Guid productId);
 
-    IEnumerable<Order> GetUserOrders(int? userId);
+    IEnumerable<Order> GetUserOrders(Guid? userId);
 }

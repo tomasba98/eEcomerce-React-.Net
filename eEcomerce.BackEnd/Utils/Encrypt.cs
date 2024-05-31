@@ -35,20 +35,14 @@ namespace eEcomerce.BackEnd.Utils
             };
 
             JwtSecurityToken securityToken = new(
-                issuer: "ToDoList",
-                expires: DateTime.Now.AddSeconds(60),
+                issuer: "eEcomerce",
+                expires: DateTime.Now.AddHours(3),
                 claims: claims,
                 signingCredentials: signingCredentials);
 
             return new JwtSecurityTokenHandler().WriteToken(securityToken);
         }
 
-        /// <summary>
-        /// Encrypts a given string using the SHA-256 algorithm.
-        /// </summary>
-        /// <param name="value">The string to be encrypted.</param>
-        /// <returns>The SHA-256 hash of the input string.</returns>
-        /// <remarks>This method converts the input string to UTF-8 bytes, computes the SHA-256 hash, and returns the hash as a hexadecimal string.</remarks>
         public static string Hash(string value)
         {
             StringBuilder sb = new();

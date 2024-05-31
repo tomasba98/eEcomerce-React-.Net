@@ -29,11 +29,11 @@ public class ProductService : IProductService
         return _productGenericService.FindAll().ToList();
     }
 
-    public IEnumerable<Product> GetUserProducts(int userId)
+    public IEnumerable<Product> GetUserProducts(Guid userId)
     {
         return _productGenericService.FilterByExpression(product => product.UserId == userId).ToList();
     }
-    public Product? GetProductById(int productId)
+    public Product? GetProductById(Guid productId)
     {
         return _productGenericService.FilterByExpression(product => product.Id == productId).FirstOrDefault();
     }

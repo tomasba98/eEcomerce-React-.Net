@@ -1,8 +1,8 @@
 ﻿namespace eEcomerce.BackEnd.Models.Order;
 public class OrderResponse
 {
-    public int Id { get; set; }
-    public DateTime DatePurchase { get; set; }
-    public decimal TotalPrice { get; set; }
+    public required Guid Id { get; set; }
+    public required DateTime DatePurchase { get; set; }
+    public required decimal TotalPrice { get; set; }
 
 }

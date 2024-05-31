@@ -12,8 +12,8 @@ using eEcomerce.BackEnd.Data;
 namespace eEcomerce.BackEnd.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240426202427_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20240530235203_FirstNewMigration")]
+    partial class FirstNewMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace eEcomerce.BackEnd.Migrations
 
             modelBuilder.Entity("eEcomerce.BackEnd.Entities.Category.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<char>("Letter")
                         .HasColumnType("character(1)");
@@ -42,16 +40,42 @@ namespace eEcomerce.BackEnd.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categorys");
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("eEcomerce.BackEnd.Entities.Comment.Comment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("PostedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("eEcomerce.BackEnd.Entities.Order.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("DatePurchase")
                         .HasColumnType("timestamp with time zone");
@@ -59,8 +83,11 @@ namespace eEcomerce.BackEnd.Migrations
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("TotalQuantityProducts")
                         .HasColumnType("integer");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -69,19 +96,17 @@ namespace eEcomerce.BackEnd.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("eEcomerce.BackEnd.Entities.Order.OrderProduct", b =>
+            modelBuilder.Entity("eEcomerce.BackEnd.Entities.OrderProduct.OrderProduct", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
 
                     b.Property<decimal>("ProductValue")
                         .HasColumnType("numeric");
@@ -100,18 +125,16 @@ namespace eEcomerce.BackEnd.Migrations
 
             modelBuilder.Entity("eEcomerce.BackEnd.Entities.Product.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -124,8 +147,8 @@ namespace eEcomerce.BackEnd.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -138,11 +161,9 @@ namespace eEcomerce.BackEnd.Migrations
 
             modelBuilder.Entity("eEcomerce.BackEnd.Entities.User.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -161,6 +182,25 @@ namespace eEcomerce.BackEnd.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("eEcomerce.BackEnd.Entities.Comment.Comment", b =>
+                {
+                    b.HasOne("eEcomerce.BackEnd.Entities.Product.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eEcomerce.BackEnd.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("eEcomerce.BackEnd.Entities.Order.Order", b =>
                 {
                     b.HasOne("eEcomerce.BackEnd.Entities.User.User", "User")
@@ -172,16 +212,16 @@ namespace eEcomerce.BackEnd.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("eEcomerce.BackEnd.Entities.Order.OrderProduct", b =>
+            modelBuilder.Entity("eEcomerce.BackEnd.Entities.OrderProduct.OrderProduct", b =>
                 {
                     b.HasOne("eEcomerce.BackEnd.Entities.Order.Order", "Order")
-                        .WithMany("Products")
+                        .WithMany("OrderProducts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eEcomerce.BackEnd.Entities.Product.Product", "Product")
-                        .WithMany("Orders")
+                        .WithMany("OrderProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -212,12 +252,12 @@ namespace eEcomerce.BackEnd.Migrations
 
             modelBuilder.Entity("eEcomerce.BackEnd.Entities.Order.Order", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("OrderProducts");
                 });
 
             modelBuilder.Entity("eEcomerce.BackEnd.Entities.Product.Product", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("OrderProducts");
                 });
 #pragma warning restore 612, 618
         }

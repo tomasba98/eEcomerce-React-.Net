@@ -1,5 +1,6 @@
 using eEcomerce.BackEnd.Data;
 using eEcomerce.BackEnd.Entities.Category;
+using eEcomerce.BackEnd.Entities.Comment;
 using eEcomerce.BackEnd.Entities.Order;
 using eEcomerce.BackEnd.Entities.OrderProduct;
 using eEcomerce.BackEnd.Entities.Product;
@@ -8,6 +9,8 @@ using eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
 using eEcomerce.BackEnd.Services.Authentication.Implementation.AuthenticationService;
 using eEcomerce.BackEnd.Services.Category;
 using eEcomerce.BackEnd.Services.Category.Implementation;
+using eEcomerce.BackEnd.Services.Comment;
+using eEcomerce.BackEnd.Services.Comment.Implementation;
 using eEcomerce.BackEnd.Services.DataAccesLayer.Implementation.GenericService;
 using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
 using eEcomerce.BackEnd.Services.Order;
@@ -33,6 +36,12 @@ internal class Program
 
         // Add DB connection string
         string? connectionString = builder.Configuration.GetConnectionString("DbConnection");
+
+        //builder.Services.AddAutoMapper(typeof(Program));
+
+        //// Register services for product-related operations.        
+        builder.Services.AddScoped<IGenericService<Comment>, GenericService<Comment>>();
+        builder.Services.AddScoped<ICommentService, CommentService>();
 
         //// Register services for product-related operations.        
         builder.Services.AddScoped<IGenericService<Product>, GenericService<Product>>();
@@ -78,7 +87,7 @@ internal class Program
                 ValidateIssuer = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
-                ValidIssuer = "ToDoList",
+                ValidIssuer = "eEcomerce",
                 ValidateAudience = false,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("!£@0#y~9I1.p0goq1£1+12345678901234567890123456789012"))
             };

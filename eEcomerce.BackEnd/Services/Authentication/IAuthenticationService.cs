@@ -1,5 +1,5 @@
 ﻿using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Models.UserModels;
+using eEcomerce.BackEnd.Models.Authentication;
 
 namespace eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
 
