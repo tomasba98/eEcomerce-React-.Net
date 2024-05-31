@@ -1,150 +1,128 @@
-﻿using eEcomerce.BackEnd.Entities.Product;
+﻿using eEcomerce.BackEnd.Entities.Comment;
+using eEcomerce.BackEnd.Entities.Product;
 using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Comment;
 using eEcomerce.BackEnd.Services.Comment;
 using eEcomerce.BackEnd.Services.Product;
 using eEcomerce.BackEnd.Services.Users;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-using System.Security.Claims;
-
-namespace eEcomerce.BackEnd.Controllers;
-
-using eEcomerce.BackEnd.Entities.Comment;
-using eEcomerce.BackEnd.Models.Product;
-
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.CodeAnalysis;
-
-[ApiController]
-[Route("api/[controller]")]
-public class CommentController : ControllerBase
+namespace eEcomerce.BackEnd.Controllers
 {
-    private readonly ICommentService _commentService;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IUserService _userService;
-    private readonly IProductService _productService;
-
-    public CommentController(ICommentService commentService, IHttpContextAccessor httpContextAccessor, IUserService userService, IProductService productService)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CommentController : BaseController
     {
-        _commentService = commentService;
-        _httpContextAccessor = httpContextAccessor;
-        _userService = userService;
-        _productService = productService;
-    }
+        private readonly ICommentService _commentService;
+        private readonly IProductService _productService;
 
-    private Guid? GetUserIdFromToken()
-    {
-        Claim? userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
-        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
+        public CommentController(
+            ICommentService commentService,
+            IHttpContextAccessor httpContextAccessor,
+            IUserService userService,
+            IProductService productService)
+            : base(httpContextAccessor, userService)
         {
-            return null;
-        }
-        return userId;
-    }
-
-    private bool ValidateUserId(Guid? userId)
-    {
-        if (userId is null || _userService.GetUserById((Guid) userId) is null)
-        {
-            return false;
-        }
-        return true;
-    }
-
-    private static CommentResponse MapToDto(Comment comment)
-    {
-        return new CommentResponse
-        {
-            CommentId = comment.Id,
-            Text = comment.Text,
-            PostedAt = comment.PostedAt,
-        };
-    }
-
-    [HttpPost]
-    [Authorize]
-    public ActionResult<CommentRequest> CreateComment(CommentRequest commentRequest, Guid productId)
-    {
-        Guid? userId = GetUserIdFromToken();
-
-        if (!ValidateUserId(userId))
-        {
-            return BadRequest();
-        }
-        User? user = _userService.GetUserById((Guid) userId);
-        Product? product = _productService.GetProductById(productId);
-
-        if (product is null)
-        {
-            return BadRequest();
+            _commentService = commentService;
+            _productService = productService;
         }
 
-        Comment comment = new(commentRequest.Text, product, user);
-
-        Comment createdComment = _commentService.CreateComment(comment);
-        if (createdComment is null)
+        private static CommentResponse MapToDto(Comment comment)
         {
-            return BadRequest("Can't create the comment");
+            return new CommentResponse
+            {
+                CommentId = comment.Id,
+                Text = comment.Text,
+                PostedAt = comment.PostedAt,
+            };
         }
 
-        CommentResponse commentResponse = new(comment.Id, comment.Text, comment.PostedAt);
-
-        return Ok(commentResponse);
-    }
-
-    [HttpGet("{productId}")]
-
-    public ActionResult<IEnumerable<CommentResponse>> GetProductComments(Guid productId)
-    {
-        IEnumerable<Comment> comments = _commentService.GetCommentsByProduct(productId);
-        IEnumerable<CommentResponse> result = comments.Select(c => MapToDto(c)).ToList();
-
-        return Ok(result);
-    }
-
-    [HttpGet("user")]
-    [Authorize]
-    public ActionResult<IEnumerable<CommentResponse>> GetUserComments()
-    {
-        Guid? userId = GetUserIdFromToken();
-
-        if (!ValidateUserId(userId))
+        [HttpPost]
+        [Authorize]
+        public ActionResult<CommentResponse> CreateComment(CommentRequest commentRequest, Guid productId)
         {
-            return BadRequest();
+            Guid? userId = GetUserIdFromToken();
+
+            if (!ValidateUserId(userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            User? user = _userService.GetUserById(userId.Value);
+            Product? product = _productService.GetProductById(productId);
+
+            if (product == null)
+            {
+                return BadRequest("Product not found.");
+            }
+
+            Comment comment = new(commentRequest.Text, product, user);
+            Comment createdComment = _commentService.CreateComment(comment);
+
+            if (createdComment == null)
+            {
+                return BadRequest("Can't create the comment.");
+            }
+
+            CommentResponse commentResponse = MapToDto(createdComment);
+
+            return Ok(commentResponse);
         }
 
-        IEnumerable<Comment> comments = _commentService.GetCommentsByUser((Guid) userId);
-        IEnumerable<CommentResponse> result = comments.Select(c => MapToDto(c)).ToList();
-
-        return Ok(result);
-    }
-
-    [HttpDelete("user")]
-    [Authorize]
-    public async Task<ActionResult<ProductResponse>> DeleteComment(Guid commentId)
-    {
-        Guid? userId = GetUserIdFromToken();
-
-        if (!ValidateUserId(userId))
+        [HttpGet("{productId}")]
+        public ActionResult<IEnumerable<CommentResponse>> GetProductComments(Guid productId)
         {
-            return BadRequest();
-        }
-        User? user = _userService.GetUserById((Guid) userId);
-        Comment? comment = _commentService.GetCommentById(commentId);
+            IEnumerable<Comment> comments = _commentService.GetCommentsByProduct(productId);
+            IEnumerable<CommentResponse> result = comments.Select(MapToDto).ToList();
 
-        if (user is null || comment is null || comment.User.Id != user.Id)
-        {
-            return BadRequest();
+            return Ok(result);
         }
 
-        bool result = await _commentService.DeleteComment(comment);
-        if (!result)
+        [HttpGet("user")]
+        [Authorize]
+        public ActionResult<IEnumerable<CommentResponse>> GetUserComments()
         {
-            return BadRequest();
+            Guid? userId = GetUserIdFromToken();
+
+            if (!ValidateUserId(userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            IEnumerable<Comment> comments = _commentService.GetCommentsByUser(userId.Value);
+            IEnumerable<CommentResponse> result = comments.Select(MapToDto).ToList();
+
+            return Ok(result);
         }
 
-        return Ok();
+        [HttpDelete("user")]
+        [Authorize]
+        public async Task<ActionResult> DeleteComment(Guid commentId)
+        {
+            Guid? userId = GetUserIdFromToken();
+
+            if (!ValidateUserId(userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            User? user = _userService.GetUserById(userId.Value);
+            Comment? comment = _commentService.GetCommentById(commentId);
+
+            if (user == null || comment == null || comment.User.Id != user.Id)
+            {
+                return BadRequest("Comment not found or user mismatch.");
+            }
+
+            bool result = await _commentService.DeleteComment(comment);
+            if (!result)
+            {
+                return BadRequest("Failed to delete the comment.");
+            }
+
+            return Ok();
+        }
     }
 }

@@ -9,168 +9,148 @@ using eEcomerce.BackEnd.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-using System.Security.Claims;
-
-namespace eEcomerce.BackEnd.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class ProductController : ControllerBase
+namespace eEcomerce.BackEnd.Controllers
 {
-    private readonly IProductService _productService;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IUserService _userService;
-    private readonly ICategoryService _categoryService;
-    public ProductController(IProductService prudctService, IHttpContextAccessor httpContextAccessor, IUserService userService, ICategoryService categoryService)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ProductController : BaseController
     {
-        _httpContextAccessor = httpContextAccessor;
-        _productService = prudctService;
-        _userService = userService;
-        _categoryService = categoryService;
-    }
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-    private Guid? GetUserIdFromToken()
-    {
-        Claim userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
-        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
+        public ProductController(IProductService productService, IHttpContextAccessor httpContextAccessor, IUserService userService, ICategoryService categoryService)
+            : base(httpContextAccessor, userService)
         {
-            return null;
-        }
-        return userId;
-    }
-
-    private bool ValidateUserId(Guid? userId)
-    {
-        if (userId == null || _userService.GetUserById((Guid) userId) == null)
-        {
-            return false;
-        }
-        return true;
-    }
-
-    private static ProductResponse MapToDto(Product product)
-    {
-        return new ProductResponse
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Brand = product.Brand,
-            CategoryId = product.CategoryId,
-            Price = product.Price,
-            Description = product.Description
-        };
-    }
-
-    [HttpGet]
-    public ActionResult<IEnumerable<ProductResponse>> GetProductsList()
-    {
-        IEnumerable<Product> products = _productService.GetAllProducts();
-        IEnumerable<ProductResponse> result = products.Select(product => MapToDto(product)).ToList();
-
-        return Ok(result);
-    }
-
-    [HttpGet("user")]
-    [Authorize]
-    public ActionResult<IEnumerable<ProductResponse>> GetUserProductsList()
-    {
-        Guid? userId = GetUserIdFromToken();
-
-        if (!ValidateUserId(userId))
-        {
-            return BadRequest();
+            _productService = productService;
+            _categoryService = categoryService;
         }
 
-        IEnumerable<Product> products = _productService.GetUserProducts((Guid) userId);
-        IEnumerable<ProductResponse> result = products.Select(product => MapToDto(product)).ToList();
-
-        return Ok(result);
-    }
-
-    [HttpPost("user")]
-    [Authorize]
-    public ActionResult<ProductResponse> CreateProduct(ProductRequest productRequest, char categoryLetter)
-    {
-        Guid? userId = GetUserIdFromToken();
-
-        if (!ValidateUserId(userId))
+        private static ProductResponse MapToDto(Product product)
         {
-            return BadRequest();
-        }
-        User? user = _userService.GetUserById((Guid) userId);
-
-        Category category = _categoryService.GetCategoryByLetter(categoryLetter);
-
-        Product product = new(productRequest.Name, productRequest.Description, productRequest.Price, productRequest.Brand, category, user);
-
-
-        Product createdProduct = _productService.CreateProduct(product);
-        if (createdProduct == null)
-        {
-            return BadRequest("Can't create the product");
+            return new ProductResponse
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Brand = product.Brand,
+                CategoryId = product.CategoryId,
+                Price = product.Price,
+                Description = product.Description
+            };
         }
 
-        return Ok(MapToDto(createdProduct));
-    }
-
-    [HttpPut("user/{productId}")]
-    [Authorize]
-    public async Task<ActionResult<ProductResponse>> UpdateProduct(ProductRequest productRequest, char categoryLetter, Guid productId)
-    {
-        Guid? userId = GetUserIdFromToken();
-
-        if (!ValidateUserId(userId))
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductResponse>> GetProductsList()
         {
-            return BadRequest();
-        }
-        Category category = _categoryService.GetCategoryByLetter(categoryLetter);
-        User? user = _userService.GetUserById(userId.Value);
-        Product? product = _productService.GetProductById(productId);
-
-        if (user is null || category is null || product is null)
-        {
-            return BadRequest();
+            IEnumerable<Product> products = _productService.GetAllProducts();
+            IEnumerable<ProductResponse> result = products.Select(MapToDto).ToList();
+            return Ok(result);
         }
 
-        product.Name = productRequest.Name;
-        product.Description = productRequest.Description;
-        product.Price = productRequest.Price;
-        product.Brand = productRequest.Brand;
-        product.Category = category;
-
-        bool result = await _productService.UpdateProduct(product);
-        if (!result)
+        [HttpGet("user")]
+        [Authorize]
+        public ActionResult<IEnumerable<ProductResponse>> GetUserProductsList()
         {
-            return BadRequest();
+            Guid? userId = GetUserIdFromToken();
+
+            if (!ValidateUserId(userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            IEnumerable<Product> products = _productService.GetUserProducts(userId.Value);
+            IEnumerable<ProductResponse> result = products.Select(MapToDto).ToList();
+
+            return Ok(result);
         }
 
-        return Ok();
-    }
-
-    [HttpDelete("user/{productId}")]
-    [Authorize]
-    public async Task<ActionResult<ProductResponse>> DeleteProduct(Guid productId)
-    {
-        Guid? userId = GetUserIdFromToken();
-
-        if (!ValidateUserId(userId))
+        [HttpPost("user")]
+        [Authorize]
+        public ActionResult<ProductResponse> CreateProduct(ProductRequest productRequest, char categoryLetter)
         {
-            return BadRequest();
-        }
-        User? user = _userService.GetUserById((Guid) userId);
-        Product? product = _productService.GetProductById(productId);
+            Guid? userId = GetUserIdFromToken();
 
-        if (user is null || product is null || product.User.Id != user.Id)
-        {
-            return BadRequest();
-        }
+            if (!ValidateUserId(userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
 
-        bool result = await _productService.DeleteProduct(product);
-        if (!result)
-        {
-            return BadRequest();
+            User user = _userService.GetUserById(userId.Value);
+            Category category = _categoryService.GetCategoryByLetter(categoryLetter);
+
+            Product product = new(productRequest.Name, productRequest.Description, productRequest.Price, productRequest.Brand, category, user);
+            Product createdProduct = _productService.CreateProduct(product);
+
+            if (createdProduct == null)
+            {
+                return BadRequest("Can't create the product.");
+            }
+
+            return Ok(MapToDto(createdProduct));
         }
 
-        return Ok();
+        [HttpPut("user/{productId}")]
+        [Authorize]
+        public async Task<ActionResult<ProductResponse>> UpdateProduct(ProductRequest productRequest, char categoryLetter, Guid productId)
+        {
+            Guid? userId = GetUserIdFromToken();
+
+            if (!ValidateUserId(userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            Category category = _categoryService.GetCategoryByLetter(categoryLetter);
+            User user = _userService.GetUserById(userId.Value);
+            Product product = _productService.GetProductById(productId);
+
+            if (user == null || category == null || product == null)
+            {
+                return BadRequest("Invalid data.");
+            }
+
+            product.Name = productRequest.Name;
+            product.Description = productRequest.Description;
+            product.Price = productRequest.Price;
+            product.Brand = productRequest.Brand;
+            product.Category = category;
+
+            bool result = await _productService.UpdateProduct(product);
+
+            if (!result)
+            {
+                return BadRequest("Failed to update the product.");
+            }
+
+            return Ok(MapToDto(product));
+        }
+
+        [HttpDelete("user/{productId}")]
+        [Authorize]
+        public async Task<ActionResult<ProductResponse>> DeleteProduct(Guid productId)
+        {
+            Guid? userId = GetUserIdFromToken();
+
+            if (!ValidateUserId(userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            User user = _userService.GetUserById(userId.Value);
+            Product product = _productService.GetProductById(productId);
+
+            if (user == null || product == null || product.User.Id != user.Id)
+            {
+                return BadRequest("Invalid data.");
+            }
+
+            bool result = await _productService.DeleteProduct(product);
+
+            if (!result)
+            {
+                return BadRequest("Failed to delete the product.");
+            }
+
+            return Ok();
+        }
     }
 }

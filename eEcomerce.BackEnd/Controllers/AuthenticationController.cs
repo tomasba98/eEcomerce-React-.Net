@@ -15,20 +15,19 @@ namespace eEcomerce.BackEnd.Controllers.AuthenticationController
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class AuthenticationController : ControllerBase
+    public class AuthenticationController : BaseController
     {
         private readonly IAuthenticationService _authenticationService;
-        private readonly IUserService _userService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationController"/> class.
         /// </summary>
         /// <param name="authenticationService">The authentication service.</param>
         /// <param name="userService">The user service.</param>
-        public AuthenticationController(IAuthenticationService authenticationService, IUserService userService)
+        public AuthenticationController(IAuthenticationService authenticationService, IUserService userService, IHttpContextAccessor httpContextAccessor)
+            : base(httpContextAccessor, userService)
         {
             _authenticationService = authenticationService;
-            _userService = userService;
         }
 
         /// <summary>
@@ -41,8 +40,9 @@ namespace eEcomerce.BackEnd.Controllers.AuthenticationController
         {
             if (_userService.CheckIfUsernameExists(request.UserName))
             {
-                return BadRequest("User Alredy in use.");
+                return BadRequest("Username already in use.");
             }
+
             string hashPassword = Encrypt.Hash(request.Password);
             User newUser = new()
             {
@@ -68,13 +68,12 @@ namespace eEcomerce.BackEnd.Controllers.AuthenticationController
 
             if (user is null)
             {
-                return BadRequest("Invalid Credential");
+                return BadRequest("Invalid credentials.");
             }
-
 
             if (!Encrypt.CheckHash(request.Password, user.Password))
             {
-                return BadRequest("Invalid Credential");
+                return BadRequest("Invalid credentials.");
             }
 
             AuthenticationResponse response = _authenticationService.GenerateJwt(user);
