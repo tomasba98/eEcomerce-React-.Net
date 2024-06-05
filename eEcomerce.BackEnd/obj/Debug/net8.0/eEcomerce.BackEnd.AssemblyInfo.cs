@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eEcomerce.BackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a67a453e3df91ce0997f17158c0075bebf6696d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa2765c7a711feae1e22e25c27ba15fead5cb92c")]
 [assembly: System.Reflection.AssemblyProductAttribute("eEcomerce.BackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eEcomerce.BackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
