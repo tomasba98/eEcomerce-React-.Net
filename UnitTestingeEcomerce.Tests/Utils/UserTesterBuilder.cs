@@ -11,20 +11,14 @@ namespace UnitTestingeEcomerce.Tests.Utils
     /// <summary>
     /// Builder class for creating User instances for testing purposes.
     /// </summary>
-    public class UserTesterBuilder
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="UserTesterBuilder"/> class.
+    /// </remarks>
+    /// <param name="mockHttpContextAccessor">The mocked HTTP context accessor.</param>
+    public class UserTesterBuilder(Mock<IHttpContextAccessor> mockHttpContextAccessor)
     {
-        private readonly User _user;
-        private readonly Mock<IHttpContextAccessor> _mockHttpContextAccessor;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserTesterBuilder"/> class.
-        /// </summary>
-        /// <param name="mockHttpContextAccessor">The mocked HTTP context accessor.</param>
-        public UserTesterBuilder(Mock<IHttpContextAccessor> mockHttpContextAccessor)
-        {
-            _user = new User();
-            _mockHttpContextAccessor = mockHttpContextAccessor;
-        }
+        private readonly User _user = new();
+        private readonly Mock<IHttpContextAccessor> _mockHttpContextAccessor = mockHttpContextAccessor;
 
         /// <summary>
         /// Sets the Id of the User.

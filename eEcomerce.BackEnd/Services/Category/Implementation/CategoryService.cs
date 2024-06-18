@@ -30,17 +30,17 @@ public class CategoryService : ICategoryService
         return categories.ToList();
     }
 
-    public Category GetCategoryById(Guid categoryId)
+    public Category? GetCategoryById(Guid categoryId)
     {
         return _categoryGenericService.FilterByExpressionLinq(c => c.Id == categoryId).FirstOrDefault();
     }
 
-    public Category GetCategoryByName(string categoryName)
+    public Category? GetCategoryByName(string categoryName)
     {
         return _categoryGenericService.FilterByExpressionLinq(c => c.Name == categoryName).FirstOrDefault();
     }
 
-    public Category GetCategoryByLetter(char categoryLetter)
+    public Category? GetCategoryByLetter(char categoryLetter)
     {
         return _categoryGenericService.FilterByExpressionLinq(c => c.Letter == categoryLetter).FirstOrDefault();
     }

@@ -50,7 +50,7 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            Guid value = userId.Value;
+            Guid value = userId!.Value;
             User? user = _userService.GetUserById(value);
             Product? product = _productService.GetProductById(productId);
 
@@ -59,10 +59,15 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Product not found.");
             }
 
+            if (user == null)
+            {
+                return BadRequest("User not found.");
+            }
+
             Comment comment = new(commentRequest.Text, product, user);
             Comment createdComment = _commentService.CreateComment(comment);
 
-            if (createdComment == null)
+            if (createdComment is null)
             {
                 return BadRequest("Can't create the comment.");
             }
@@ -92,7 +97,7 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            IEnumerable<Comment> comments = _commentService.GetCommentsByUser(userId.Value);
+            IEnumerable<Comment> comments = _commentService.GetCommentsByUser(userId!.Value);
             IEnumerable<CommentResponse> result = comments.Select(MapToDto).ToList();
 
             return Ok(result);
@@ -109,7 +114,7 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            User? user = _userService.GetUserById(userId.Value);
+            User? user = _userService.GetUserById(userId!.Value);
             Comment? comment = _commentService.GetCommentById(commentId);
 
             if (user == null || comment == null || comment.User.Id != user.Id)

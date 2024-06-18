@@ -12,7 +12,11 @@ public class Product : EntityBase
 {
     public Product()
     {
-
+        Name = string.Empty;
+        Description = string.Empty;
+        Brand = string.Empty;
+        Category = new Category();
+        User = new User();
     }
     public Product(string name, string description, decimal price, string brand, Category category, User user)
     {
@@ -38,7 +42,6 @@ public class Product : EntityBase
     [Required]
     public string Brand { get; set; }
 
-    // Collection of OrderProducts associated with this Product
     public virtual ICollection<OrderProduct> OrderProducts { get; set; } = [];
 
     [Required]
@@ -47,7 +50,6 @@ public class Product : EntityBase
 
     public Guid CategoryId { get; set; }
 
-    // Navigation property for the User
     [Column("UserId")]
     public virtual User User { get; set; }
 

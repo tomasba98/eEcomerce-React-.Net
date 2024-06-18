@@ -71,7 +71,7 @@ namespace eEcomerce.BackEnd.Controllers
             {
                 Quantity = orderProducts.Quantity,
                 ProductValue = orderProducts.ProductValue,
-                Proudct = MapToDto_Product(GetProductById(orderProducts.ProductId))
+                Proudct = MapToDto_Product(GetProductById(orderProducts.ProductId)!)
 
             };
         }
@@ -87,7 +87,7 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            IEnumerable<Order> orders = _orderService.GetUserOrders(userId.Value);
+            IEnumerable<Order> orders = _orderService.GetUserOrders(userId!.Value);
             IEnumerable<OrderResponse> result = orders.Select(MapToDto_OrderResponse).ToList();
 
             return Ok(result);
@@ -121,7 +121,12 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            User? user = _userService.GetUserById(userId.Value);
+            User? user = _userService.GetUserById(userId!.Value);
+
+            if (user == null)
+            {
+                return BadRequest("User not found.");
+            }
 
             decimal totalOrderPrice = 0;
             foreach (OrderProductRequest productOrder in orderRequest.ListOrderProducts)

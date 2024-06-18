@@ -57,7 +57,7 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            IEnumerable<Product> products = _productService.GetUserProducts(userId.Value);
+            IEnumerable<Product> products = _productService.GetUserProducts(userId!.Value);
             IEnumerable<ProductResponse> result = products.Select(MapToDto).ToList();
 
             return Ok(result);
@@ -74,8 +74,17 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            User user = _userService.GetUserById(userId.Value);
-            Category category = _categoryService.GetCategoryByLetter(categoryLetter);
+            User? user = _userService.GetUserById(userId!.Value);
+            if (user == null)
+            {
+                return BadRequest("User not found.");
+            }
+
+            Category? category = _categoryService.GetCategoryByLetter(categoryLetter);
+            if (category == null)
+            {
+                return BadRequest("Category not found.");
+            }
 
             Product product = new(productRequest.Name, productRequest.Description, productRequest.Price, productRequest.Brand, category, user);
             Product createdProduct = _productService.CreateProduct(product);
@@ -99,9 +108,9 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            Category category = _categoryService.GetCategoryByLetter(categoryLetter);
-            User user = _userService.GetUserById(userId.Value);
-            Product product = _productService.GetProductById(productId);
+            Category? category = _categoryService.GetCategoryByLetter(categoryLetter);
+            User? user = _userService.GetUserById(userId!.Value);
+            Product? product = _productService.GetProductById(productId);
 
             if (user == null || category == null || product == null)
             {
@@ -135,8 +144,8 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            User user = _userService.GetUserById(userId.Value);
-            Product product = _productService.GetProductById(productId);
+            User? user = _userService.GetUserById(userId!.Value);
+            Product? product = _productService.GetProductById(productId);
 
             if (user == null || product == null || product.User.Id != user.Id)
             {

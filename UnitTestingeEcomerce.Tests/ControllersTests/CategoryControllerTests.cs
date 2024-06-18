@@ -23,11 +23,11 @@ public class CategoryControllerTests
     public void GetCategorysList_ReturnsOkResult_WithListOfCategories()
     {
         //Arrange
-        List<Category> categories = new()
-        {
+        List<Category> categories =
+        [
             new Category { Id = Guid.NewGuid(), Letter = 'A', Name = "Category A" },
             new Category { Id = Guid.NewGuid(), Letter = 'B', Name = "Category B" }
-        };
+        ];
 
         _mockCategoryService.Setup(service => service.GetAllCategories()).Returns(categories);
 

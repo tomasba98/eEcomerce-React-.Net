@@ -6,6 +6,7 @@ using eEcomerce.BackEnd.Models.Product;
 using eEcomerce.BackEnd.Services.Category;
 using eEcomerce.BackEnd.Services.Product;
 using eEcomerce.BackEnd.Services.User;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -82,11 +83,11 @@ namespace UnitTestingeEcomerce.Tests.ControllersTests
             Guid userId = Guid.NewGuid();
             _userBuilder.WithId(userId).SetupUserInHttpContext();
 
-            List<Product> products = new()
-            {
+            List<Product> products =
+            [
                 new Product { Id = Guid.NewGuid(), Name = "Product 1", Brand = "Brand 1", Price = 100 },
                 new Product { Id = Guid.NewGuid(), Name = "Product 2", Brand = "Brand 2", Price = 200 }
-            };
+            ];
             _mockUserService.Setup(x => x.GetUserById(userId)).Returns(new User());
             _mockProductService.Setup(x => x.GetUserProducts(userId)).Returns(products);
 
@@ -130,7 +131,7 @@ namespace UnitTestingeEcomerce.Tests.ControllersTests
 
             _mockUserService.Setup(x => x.GetUserById(userId)).Returns(user);
             _mockCategoryService.Setup(x => x.GetCategoryByLetter(categoryLetter)).Returns(category);
-            _mockProductService.Setup(x => x.CreateProduct(It.IsAny<Product>())).Returns((Product) null);
+            _mockProductService.Setup(x => x.CreateProduct(It.IsAny<Product>())).Returns<Product>(null);
 
             // Act
             ActionResult<ProductResponse> result = _controller.CreateProduct(productRequest, categoryLetter);

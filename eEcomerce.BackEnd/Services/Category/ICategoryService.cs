@@ -19,21 +19,21 @@ public interface ICategoryService
     /// </summary>
     /// <param name="categoryId">The unique identifier of the category.</param>
     /// <returns>The category if found; otherwise, null.</returns>
-    Category GetCategoryById(Guid categoryId);
+    Category? GetCategoryById(Guid categoryId);
 
     /// <summary>
     /// Retrieves a category by its name.
     /// </summary>
     /// <param name="categoryName">The name of the category.</param>
     /// <returns>The category if found; otherwise, null.</returns>
-    Category GetCategoryByName(string categoryName);
+    Category? GetCategoryByName(string categoryName);
 
     /// <summary>
     /// Retrieves a category by its starting letter.
     /// </summary>
     /// <param name="categoryLeter">The starting letter of the category name.</param>
     /// <returns>The category if found; otherwise, null.</returns>
-    Category GetCategoryByLetter(char categoryLeter);
+    Category? GetCategoryByLetter(char categoryLeter);
 
     /// <summary>
     /// Updates an existing category asynchronously.

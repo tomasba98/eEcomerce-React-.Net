@@ -11,6 +11,8 @@ public class OrderProduct : EntityBase
 {
     public OrderProduct()
     {
+        Order = new Order();
+        Product = new Product();
     }
     public OrderProduct(int quantity, Order order, Product product)
     {

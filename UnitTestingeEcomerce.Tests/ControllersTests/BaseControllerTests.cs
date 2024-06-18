@@ -1,11 +1,13 @@
 ﻿using eEcomerce.BackEnd.Controllers;
 using eEcomerce.BackEnd.Entities.User;
+using eEcomerce.BackEnd.Services.User;
+
 using Microsoft.AspNetCore.Http;
 
 using Moq;
 
 using System.Security.Claims;
-using eEcomerce.BackEnd.Services.User;
+
 using UnitTestingeEcomerce.Tests.Utils;
 
 namespace UnitTestingeEcomerce.Tests.ControllersTests;
@@ -60,7 +62,7 @@ public class BaseControllerTests
     public void GetUserIdFromToken_InvalidUserIdClaim_ReturnsNull()
     {
         // Arrange
-        List<Claim> claims = new() { new Claim("UserId", "invalid-guid") };
+        List<Claim> claims = [new Claim("UserId", "invalid-guid")];
         ClaimsIdentity identity = new(claims, "TestAuthType");
         ClaimsPrincipal claimsPrincipal = new(identity);
         DefaultHttpContext context = new() { User = claimsPrincipal };
@@ -113,13 +115,9 @@ public class BaseControllerTests
     }
 }
 
-public class TestBaseController : BaseController
+public class TestBaseController(IHttpContextAccessor httpContextAccessor, IUserService userService)
+    : BaseController(httpContextAccessor, userService)
 {
-    public TestBaseController(IHttpContextAccessor httpContextAccessor, IUserService userService)
-        : base(httpContextAccessor, userService)
-    {
-    }
-
     public new Guid? GetUserIdFromToken()
     {
         return base.GetUserIdFromToken();
