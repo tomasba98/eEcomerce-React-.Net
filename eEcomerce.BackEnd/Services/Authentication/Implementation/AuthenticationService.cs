@@ -1,11 +1,8 @@
-﻿using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Models.Authentication;
+﻿using eEcomerce.BackEnd.Models.Authentication;
 using eEcomerce.BackEnd.Utils;
 
+namespace eEcomerce.BackEnd.Services.Authentication.Implementation;
 
-namespace eEcomerce.BackEnd.Services.Authentication.Implementation.AuthenticationService;
-
-using eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
 public class AuthenticationService : IAuthenticationService
 {
 
@@ -14,7 +11,7 @@ public class AuthenticationService : IAuthenticationService
 
     }
 
-    public AuthenticationResponse GenerateJwt(User user)
+    public AuthenticationResponse GenerateJwt(Entities.User.User user)
     {
 
         string token = Encrypt.GenerateToken(user);

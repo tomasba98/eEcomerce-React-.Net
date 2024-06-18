@@ -1,136 +1,121 @@
-﻿using eEcomerce.BackEnd.Data;
+﻿using eEcomerce.BackEnd.Context;
 using eEcomerce.BackEnd.Entities;
 
 using Microsoft.EntityFrameworkCore;
 
 using System.Linq.Expressions;
 
-namespace eEcomerce.BackEnd.Services.DataAccesLayer.Implementation.GenericDao;
-
-using eEcomerce.BackEnd.Services.Services.DataAccessLayer.IGenericDao;
-public class GenericDao<TEntity> : IGenericDao<TEntity> where TEntity : EntityBase
+namespace eEcomerce.BackEnd.Services.DataAccessLayer.Implementation
 {
-    public GenericDao(AppDbContext context)
+    public class GenericDao<TEntity> : IGenericDao<TEntity> where TEntity : EntityBase
     {
-        GetContext = context;
-        DbSet = GetContext.Set<TEntity>();
-    }
-
-    public DbSet<TEntity> DbSet { get; }
-
-    public AppDbContext GetContext { get; }
-
-    public void Insert(TEntity entity)
-    {
-        try
+        public GenericDao(AppDbContext context)
         {
-            DbSet.Add(entity);
+            GetContext = context;
+            DbSet = GetContext.Set<TEntity>();
         }
-        catch (Exception ex)
+
+        public DbSet<TEntity> DbSet { get; }
+
+        public AppDbContext GetContext { get; }
+
+        public async Task InsertAsync(TEntity entity)
         {
-            System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
-            throw;
+            try
+            {
+                await DbSet.AddAsync(entity);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
+                throw new InvalidOperationException("An error occurred while inserting the entity.", ex);
+            }
         }
-    }
 
-    public void Insert(IEnumerable<TEntity> entities)
-    {
-        try
+        public async Task InsertAsync(IEnumerable<TEntity> entities)
         {
-            DbSet.AddRange(entities);
+            try
+            {
+                await DbSet.AddRangeAsync(entities);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
+                throw new InvalidOperationException("An error occurred while inserting the enumerable entities.", ex);
+            }
         }
-        catch (Exception ex)
+
+        public Task DeleteAsync(TEntity entity)
         {
-            System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
-            throw;
+            try
+            {
+                DbSet.Remove(entity);
+                return Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
+                throw new InvalidOperationException("An error occurred while deleting the entity.", ex);
+            }
         }
-    }
 
-    public Task InsertAsync(IEnumerable<TEntity> entities)
-    {
-        return DbSet.AddRangeAsync(entities);
-    }
-
-    public async Task InsertAsync(TEntity entity)
-    {
-        try
+        public Task UpdateAsync(TEntity entity)
         {
-            await DbSet.AddAsync(entity);
+            try
+            {
+                GetContext.Entry(entity).State = EntityState.Modified;
+                return Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
+                throw new InvalidOperationException("An error occurred while updating the entity.", ex);
+            }
         }
-        catch (Exception ex)
+
+        public async Task<TEntity> GetAsync(params object[] keyValues)
         {
-            System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
-            throw;
+            try
+            {
+                TEntity? entity = await DbSet.FindAsync(keyValues);
+                return entity ?? throw new InvalidOperationException("Entity not found.");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
+                throw new InvalidOperationException("An error occurred while retrieving the entity.", ex);
+            }
         }
-    }
 
+        public async Task<IEnumerable<TEntity>> FindAllAsync()
+        {
+            try
+            {
+                return await DbSet.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
+                throw new InvalidOperationException("An error occurred while retrieving all entities.", ex);
+            }
+        }
 
+        public async Task SaveAsync()
+        {
+            try
+            {
+                await GetContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: {0}", ex);
+                throw new InvalidOperationException("An error occurred while saving changes to the database.", ex);
+            }
+        }
 
-    public void Delete(TEntity entity)
-    {
-        DbSet.Remove(entity);
-    }
-
-    public void Delete(IEnumerable<TEntity> entities)
-    {
-        DbSet.RemoveRange(entities);
-    }
-
-    public void DeleteUnattached(TEntity entity)
-    {
-        DbSet.Attach(entity);
-        DbSet.Remove(entity);
-    }
-
-    public void Update(TEntity entity)
-    {
-        GetContext.Entry(entity).State = EntityState.Modified;
-    }
-
-    public virtual TEntity Get(params object[] keyValues)
-    {
-        TEntity? entity = DbSet.Find(keyValues);
-
-        return entity ?? throw new InvalidOperationException("Entity not found.");
-    }
-
-    public async Task<IEnumerable<TEntity>> FindAllAsync()
-    {
-        return await DbSet.ToListAsync();
-    }
-
-    public IQueryable<TEntity> FindAllQueryable()
-    {
-        return DbSet;
-    }
-
-    public IEnumerable<TEntity> FindAllEnumerable()
-    {
-        return DbSet.ToList();
-    }
-
-    public virtual IQueryable<TEntity> Include(Expression<Func<TEntity, object>> expression)
-    {
-        return DbSet.Include(expression);
-    }
-
-    public virtual IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> expression)
-    {
-        return DbSet.Where(expression);
-    }
-
-    public async Task SaveAsync()
-    {
-        await GetContext.SaveChangesAsync();
-    }
-
-    public void Save()
-    {
-        GetContext.SaveChanges();
-    }
-
-    public void GenericEntityDispose()
-    {
-        GetContext.Dispose();
+        public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> expression)
+        {
+            return DbSet.Where(expression);
+        }
     }
 }

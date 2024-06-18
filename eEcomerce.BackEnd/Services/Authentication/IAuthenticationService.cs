@@ -1,7 +1,6 @@
-﻿using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Models.Authentication;
+﻿using eEcomerce.BackEnd.Models.Authentication;
 
-namespace eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
+namespace eEcomerce.BackEnd.Services.Authentication;
 
 
 /// <summary>
@@ -14,5 +13,5 @@ public interface IAuthenticationService
     /// </summary>
     /// <param name="user">The user for whom the JWT token will be generated.</param>
     /// <returns>An AuthenticationResponse containing the generated JWT token.</returns>
-    AuthenticationResponse GenerateJwt(User user);
+    AuthenticationResponse GenerateJwt(Entities.User.User user);
 }

@@ -1,84 +1,70 @@
 ﻿using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Authentication;
-using eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
-using eEcomerce.BackEnd.Services.Users;
+using eEcomerce.BackEnd.Services.Authentication;
+using eEcomerce.BackEnd.Services.User;
 using eEcomerce.BackEnd.Utils;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace eEcomerce.BackEnd.Controllers.AuthenticationController
+namespace eEcomerce.BackEnd.Controllers;
+
+
+[Route("api/[controller]")]
+[ApiController]
+[AllowAnonymous]
+public class AuthenticationController : BaseController
 {
-    /// <summary>
-    /// Controller for user authentication.
-    /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    [AllowAnonymous]
-    public class AuthenticationController : BaseController
+    private readonly IAuthenticationService _authenticationService;
+
+
+    public AuthenticationController(IAuthenticationService authenticationService, IUserService userService, IHttpContextAccessor httpContextAccessor)
+        : base(httpContextAccessor, userService)
     {
-        private readonly IAuthenticationService _authenticationService;
+        _authenticationService = authenticationService;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationController"/> class.
-        /// </summary>
-        /// <param name="authenticationService">The authentication service.</param>
-        /// <param name="userService">The user service.</param>
-        public AuthenticationController(IAuthenticationService authenticationService, IUserService userService, IHttpContextAccessor httpContextAccessor)
-            : base(httpContextAccessor, userService)
+
+    [HttpPost("Register")]
+    public IActionResult Register(RegisterUserRequest request)
+    {
+        if (_userService.CheckIfUsernameExists(request.UserName))
         {
-            _authenticationService = authenticationService;
+            return BadRequest("Username already in use.");
         }
 
-        /// <summary>
-        /// Registers a new user.
-        /// </summary>
-        /// <param name="request">The registration request.</param>
-        /// <returns>An action result indicating the registration status.</returns>
-        [HttpPost("Register")]
-        public IActionResult Register(RegisterUserRequest request)
+        string hashPassword = Encrypt.Hash(request.Password);
+        User newUser = new()
         {
-            if (_userService.CheckIfUsernameExists(request.UserName))
-            {
-                return BadRequest("Username already in use.");
-            }
+            Email = request.Email,
+            UserName = request.UserName,
+            Password = hashPassword
+        };
 
-            string hashPassword = Encrypt.Hash(request.Password);
-            User newUser = new()
-            {
-                Email = request.Email,
-                UserName = request.UserName,
-                Password = hashPassword
-            };
+        bool result = _userService.CreateUser(newUser);
 
-            bool result = _userService.CreateUser(newUser);
+        return result ? Ok() : BadRequest("Something went wrong.");
+    }
 
-            return result ? Ok() : BadRequest("Something went wrong.");
+
+    [HttpPost("Login")]
+    public IActionResult Login(AccessRequest request)
+    {
+        User? user = _userService.GetUserByName(request.UserName);
+
+        if (user is null)
+        {
+            return BadRequest("Invalid credentials.");
         }
 
-        /// <summary>
-        /// Logs in a user.
-        /// </summary>
-        /// <param name="request">The login request.</param>
-        /// <returns>An action result containing authentication response.</returns>
-        [HttpPost("Login")]
-        public IActionResult Login(AccessRequest request)
+        if (!Encrypt.CheckHash(request.Password, user.Password))
         {
-            User? user = _userService.GetUserByName(request.UserName);
-
-            if (user is null)
-            {
-                return BadRequest("Invalid credentials.");
-            }
-
-            if (!Encrypt.CheckHash(request.Password, user.Password))
-            {
-                return BadRequest("Invalid credentials.");
-            }
-
-            AuthenticationResponse response = _authenticationService.GenerateJwt(user);
-
-            return Ok(response);
+            return BadRequest("Invalid credentials.");
         }
+
+        AuthenticationResponse response = _authenticationService.GenerateJwt(user);
+
+        return Ok(response);
     }
 }
+

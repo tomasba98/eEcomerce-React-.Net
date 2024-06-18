@@ -1,7 +1,8 @@
-﻿namespace eEcomerce.BackEnd.Services.Product.Implementation;
+﻿using eEcomerce.BackEnd.Services.DataAccessLayer;
+
+namespace eEcomerce.BackEnd.Services.Product.Implementation;
 
 using eEcomerce.BackEnd.Entities.Product;
-using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
 using eEcomerce.BackEnd.Services.Product;
 
 using Microsoft.CodeAnalysis;
@@ -20,33 +21,34 @@ public class ProductService : IProductService
 
     public Product CreateProduct(Product product)
     {
-        _productGenericService.Insert(product);
+        _productGenericService.InsertAsync(product);
         return product;
     }
 
     public IEnumerable<Product> GetAllProducts()
     {
-        return _productGenericService.FindAll().ToList();
+        IEnumerable<Product> products = _productGenericService.FindAllAsync().Result;
+        return products.ToList();
     }
 
     public IEnumerable<Product> GetUserProducts(Guid userId)
     {
-        return _productGenericService.FilterByExpression(product => product.UserId == userId).ToList();
+        return _productGenericService.FilterByExpressionLinq(product => product.UserId == userId).ToList();
     }
     public Product? GetProductById(Guid productId)
     {
-        return _productGenericService.FilterByExpression(product => product.Id == productId).FirstOrDefault();
+        return _productGenericService.FilterByExpressionLinq(product => product.Id == productId).FirstOrDefault();
     }
 
     public Product? GetProductByBrand(string productBrand)
     {
-        return _productGenericService.FilterByExpression(product => product.Brand == productBrand).FirstOrDefault();
+        return _productGenericService.FilterByExpressionLinq(product => product.Brand == productBrand).FirstOrDefault();
     }
 
 
     public Product? GetProductByName(string productName)
     {
-        return _productGenericService.FilterByExpression(product => product.Name == productName).FirstOrDefault();
+        return _productGenericService.FilterByExpressionLinq(product => product.Name == productName).FirstOrDefault();
     }
 
     public async Task<bool> UpdateProduct(Product product)

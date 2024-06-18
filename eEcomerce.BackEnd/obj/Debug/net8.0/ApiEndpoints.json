@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "eEcomerce.BackEnd.Controllers.AuthenticationController.AuthenticationController",
+    "ContainingType": "eEcomerce.BackEnd.Controllers.AuthenticationController",
     "Method": "Login",
     "RelativePath": "api/Authentication/Login",
     "HttpMethod": "POST",
@@ -16,7 +16,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "eEcomerce.BackEnd.Controllers.AuthenticationController.AuthenticationController",
+    "ContainingType": "eEcomerce.BackEnd.Controllers.AuthenticationController",
     "Method": "Register",
     "RelativePath": "api/Authentication/Register",
     "HttpMethod": "POST",
@@ -72,7 +72,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "eEcomerce.BackEnd.Models.Comment.CommentRequest",
+        "Type": "eEcomerce.BackEnd.Models.Comment.CommentResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -111,7 +111,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.CommentController",
     "Method": "GetUserComments",
-    "RelativePath": "api/Comment/user",
+    "RelativePath": "api/Comment/users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -131,7 +131,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.CommentController",
     "Method": "DeleteComment",
-    "RelativePath": "api/Comment/user",
+    "RelativePath": "api/Comment/users",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -142,22 +142,12 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "eEcomerce.BackEnd.Models.Product.ProductResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
     "Method": "GetUserOrdersList",
-    "RelativePath": "api/Order/user",
+    "RelativePath": "api/Order/users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -177,7 +167,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
     "Method": "CreateUserOrder",
-    "RelativePath": "api/Order/user",
+    "RelativePath": "api/Order/users",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -190,7 +180,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "eEcomerce.BackEnd.Models.Order.OrderRequest",
+        "Type": "eEcomerce.BackEnd.Models.Order.OrderResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -203,7 +193,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.OrderController",
     "Method": "GetUserOrderProductsList",
-    "RelativePath": "api/Order/user/{orderId}",
+    "RelativePath": "api/Order/users/{orderId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -249,7 +239,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "GetUserProductsList",
-    "RelativePath": "api/Product/user",
+    "RelativePath": "api/Product/users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -269,7 +259,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "CreateProduct",
-    "RelativePath": "api/Product/user",
+    "RelativePath": "api/Product/users",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -300,7 +290,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "UpdateProduct",
-    "RelativePath": "api/Product/user/{productId}",
+    "RelativePath": "api/Product/users/{productId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -336,7 +326,7 @@
   {
     "ContainingType": "eEcomerce.BackEnd.Controllers.ProductController",
     "Method": "DeleteProduct",
-    "RelativePath": "api/Product/user/{productId}",
+    "RelativePath": "api/Product/users/{productId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

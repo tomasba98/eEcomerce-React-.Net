@@ -1,24 +1,21 @@
-﻿
+﻿using eEcomerce.BackEnd.Services.DataAccessLayer;
 
-namespace eEcomerce.BackEnd.Services.Users.Implementation;
-
-using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
+namespace eEcomerce.BackEnd.Services.User.Implementation;
 
 public class UserService : IUserService
 {
-    private readonly IGenericService<User> _userGenericService;
+    private readonly IGenericService<Entities.User.User> _userGenericService;
 
-    public UserService(IGenericService<User> userGenericService)
+    public UserService(IGenericService<Entities.User.User> userGenericService)
     {
         _userGenericService = userGenericService;
     }
 
-    public bool CreateUser(User userEntity)
+    public bool CreateUser(Entities.User.User userEntity)
     {
         try
         {
-            _userGenericService.Insert(userEntity);
+            _userGenericService.InsertAsync(userEntity);
             return true;
         }
         catch
@@ -27,19 +24,19 @@ public class UserService : IUserService
         }
     }
 
-    public User? GetUserById(Guid userId)
+    public Entities.User.User? GetUserById(Guid userId)
     {
-        return _userGenericService.FilterByExpression(user => user.Id == userId).FirstOrDefault();
+        return _userGenericService.FilterByExpressionLinq(user => user.Id == userId).FirstOrDefault();
     }
 
-    public User? GetUserByName(string userName)
+    public Entities.User.User? GetUserByName(string userName)
     {
-        return _userGenericService.FilterByExpression(user => user.UserName == userName).FirstOrDefault();
+        return _userGenericService.FilterByExpressionLinq(user => user.UserName == userName).FirstOrDefault();
     }
 
     public bool CheckIfUsernameExists(string userName)
     {
-        return _userGenericService.FilterByExpression(user => user.UserName == userName).Any();
+        return _userGenericService.FilterByExpressionLinq(user => user.UserName == userName).Any();
     }
 
 }

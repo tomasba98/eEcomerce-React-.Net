@@ -1,4 +1,4 @@
-﻿using eEcomerce.BackEnd.Services.Users;
+﻿using eEcomerce.BackEnd.Services.User;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +19,7 @@ namespace eEcomerce.BackEnd.Controllers
 
         protected Guid? GetUserIdFromToken()
         {
-            Claim? userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId");
+            Claim? userIdClaim = _httpContextAccessor.HttpContext?.User.FindFirst("UserId");
             if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out Guid userId))
             {
                 return null;

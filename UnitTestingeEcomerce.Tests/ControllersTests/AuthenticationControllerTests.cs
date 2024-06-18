@@ -1,8 +1,8 @@
-﻿using eEcomerce.BackEnd.Controllers.AuthenticationController;
+﻿using eEcomerce.BackEnd.Controllers;
 using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Authentication;
-using eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
-using eEcomerce.BackEnd.Services.Users;
+using eEcomerce.BackEnd.Services.Authentication;
+using eEcomerce.BackEnd.Services.User;
 using eEcomerce.BackEnd.Utils;
 
 using Microsoft.AspNetCore.Http;

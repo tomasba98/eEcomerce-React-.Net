@@ -1,32 +1,34 @@
-using eEcomerce.BackEnd.Data;
+using eEcomerce.BackEnd.Context;
 using eEcomerce.BackEnd.Entities.Category;
 using eEcomerce.BackEnd.Entities.Comment;
 using eEcomerce.BackEnd.Entities.Order;
 using eEcomerce.BackEnd.Entities.OrderProduct;
 using eEcomerce.BackEnd.Entities.Product;
 using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Services.Authentication.IAuthenticationService;
-using eEcomerce.BackEnd.Services.Authentication.Implementation.AuthenticationService;
+using eEcomerce.BackEnd.Services.Authentication;
+using eEcomerce.BackEnd.Services.Authentication.Implementation;
 using eEcomerce.BackEnd.Services.Category;
 using eEcomerce.BackEnd.Services.Category.Implementation;
 using eEcomerce.BackEnd.Services.Comment;
 using eEcomerce.BackEnd.Services.Comment.Implementation;
-using eEcomerce.BackEnd.Services.DataAccesLayer.Implementation.GenericService;
-using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
+using eEcomerce.BackEnd.Services.DataAccessLayer;
+using eEcomerce.BackEnd.Services.DataAccessLayer.Implementation;
 using eEcomerce.BackEnd.Services.Order;
 using eEcomerce.BackEnd.Services.Order.Implementation;
 using eEcomerce.BackEnd.Services.OrderProduct;
 using eEcomerce.BackEnd.Services.OrderProduct.Implementation;
 using eEcomerce.BackEnd.Services.Product;
 using eEcomerce.BackEnd.Services.Product.Implementation;
-using eEcomerce.BackEnd.Services.Users;
-using eEcomerce.BackEnd.Services.Users.Implementation;
+using eEcomerce.BackEnd.Services.User;
+using eEcomerce.BackEnd.Services.User.Implementation;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 using System.Text;
+
+namespace eEcomerce.BackEnd;
 
 internal class Program
 {
@@ -39,27 +41,27 @@ internal class Program
 
         //builder.Services.AddAutoMapper(typeof(Program));
 
-        //// Register services for product-related operations.        
+        // Register services for product-related operations.        
         builder.Services.AddScoped<IGenericService<Comment>, GenericService<Comment>>();
         builder.Services.AddScoped<ICommentService, CommentService>();
 
-        //// Register services for product-related operations.        
+        // Register services for product-related operations.        
         builder.Services.AddScoped<IGenericService<Product>, GenericService<Product>>();
         builder.Services.AddScoped<IProductService, ProductService>();
 
-        //// Register services for order-related operations.        
+        // Register services for order-related operations.        
         builder.Services.AddScoped<IGenericService<Order>, GenericService<Order>>();
         builder.Services.AddScoped<IOrderService, OrderService>();
 
-        //// Register services for OrderProduct-related operations.        
+        // Register services for OrderProduct-related operations.        
         builder.Services.AddScoped<IGenericService<OrderProduct>, GenericService<OrderProduct>>();
         builder.Services.AddScoped<IOrderProductService, OrderProductService>();
 
-        //// Register services for category-related operations.        
+        // Register services for category-related operations.        
         builder.Services.AddScoped<IGenericService<Category>, GenericService<Category>>();
         builder.Services.AddScoped<ICategoryService, CategoryService>();
 
-        //// Register services for user-related operations.
+        // Register services for user-related operations.
         builder.Services.AddScoped<IGenericService<User>, GenericService<User>>();
         builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
         builder.Services.AddScoped<IUserService, UserService>();
@@ -114,22 +116,22 @@ internal class Program
             });
 
             c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference
                 {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                },
-                Scheme = "oauth2",
-                Name = "Bearer",
-                In = ParameterLocation.Header
-            },
-            new List<string>()
-        }
-    });
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        },
+                        Scheme = "oauth2",
+                        Name = "Bearer",
+                        In = ParameterLocation.Header
+                    },
+                    new List<string>()
+                }
+            });
         });
 
         WebApplication app = builder.Build();
@@ -138,9 +140,9 @@ internal class Program
         app.UseCors(policy =>
         {
             policy.WithOrigins("http://localhost:5173")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod()
-                  .AllowCredentials();
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
         });
 
         // Configure middleware components.

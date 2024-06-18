@@ -8,8 +8,7 @@ using eEcomerce.BackEnd.Models.OrderProduct;
 using eEcomerce.BackEnd.Services.Order;
 using eEcomerce.BackEnd.Services.OrderProduct;
 using eEcomerce.BackEnd.Services.Product;
-using eEcomerce.BackEnd.Services.Users;
-
+using eEcomerce.BackEnd.Services.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

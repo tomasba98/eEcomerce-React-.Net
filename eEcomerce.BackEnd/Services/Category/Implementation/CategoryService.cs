@@ -1,7 +1,8 @@
-﻿namespace eEcomerce.BackEnd.Services.Category.Implementation;
+﻿using eEcomerce.BackEnd.Services.DataAccessLayer;
+
+namespace eEcomerce.BackEnd.Services.Category.Implementation;
 using eEcomerce.BackEnd.Entities.Category;
 using eEcomerce.BackEnd.Services.Category;
-using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
 
 using Microsoft.CodeAnalysis;
 
@@ -19,28 +20,29 @@ public class CategoryService : ICategoryService
 
     public Category CreateCategory(Category category)
     {
-        _categoryGenericService.Insert(category);
+        _categoryGenericService.InsertAsync(category);
         return category;
     }
 
     public IEnumerable<Category> GetAllCategories()
     {
-        return _categoryGenericService.FindAll().ToList();
+        IEnumerable<Category> categories = _categoryGenericService.FindAllAsync().Result;
+        return categories.ToList();
     }
 
     public Category GetCategoryById(Guid categoryId)
     {
-        return _categoryGenericService.FilterByExpression(c => c.Id == categoryId).FirstOrDefault();
+        return _categoryGenericService.FilterByExpressionLinq(c => c.Id == categoryId).FirstOrDefault();
     }
 
     public Category GetCategoryByName(string categoryName)
     {
-        return _categoryGenericService.FilterByExpression(c => c.Name == categoryName).FirstOrDefault();
+        return _categoryGenericService.FilterByExpressionLinq(c => c.Name == categoryName).FirstOrDefault();
     }
 
     public Category GetCategoryByLetter(char categoryLetter)
     {
-        return _categoryGenericService.FilterByExpression(c => c.Letter == categoryLetter).FirstOrDefault();
+        return _categoryGenericService.FilterByExpressionLinq(c => c.Letter == categoryLetter).FirstOrDefault();
     }
 
     public async Task<bool> UpdateCategory(Category category)

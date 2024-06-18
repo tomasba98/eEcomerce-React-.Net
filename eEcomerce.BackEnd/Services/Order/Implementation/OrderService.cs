@@ -1,4 +1,4 @@
-﻿using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
+﻿using eEcomerce.BackEnd.Services.DataAccessLayer;
 
 namespace eEcomerce.BackEnd.Services.Order.Implementation;
 
@@ -15,17 +15,17 @@ public class OrderService : IOrderService
     }
     public Order CreateOrder(Order order)
     {
-        _orderGenericService.Insert(order);
+        _orderGenericService.InsertAsync(order);
         return order;
     }
 
     public Order? GetOrderById(Guid orderId)
     {
-        return _orderGenericService.FilterByExpression(order => order.Id == orderId).FirstOrDefault();
+        return _orderGenericService.FilterByExpressionLinq(order => order.Id == orderId).FirstOrDefault();
     }
 
     public IEnumerable<Order> GetUserOrders(Guid? userId)
     {
-        return _orderGenericService.FilterByExpression(order => order.UserId == userId).ToList();
+        return _orderGenericService.FilterByExpressionLinq(order => order.UserId == userId).ToList();
     }
 }

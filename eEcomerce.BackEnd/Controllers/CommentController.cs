@@ -4,7 +4,7 @@ using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Comment;
 using eEcomerce.BackEnd.Services.Comment;
 using eEcomerce.BackEnd.Services.Product;
-using eEcomerce.BackEnd.Services.Users;
+using eEcomerce.BackEnd.Services.User;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +50,8 @@ namespace eEcomerce.BackEnd.Controllers
                 return BadRequest("Invalid user ID.");
             }
 
-            User? user = _userService.GetUserById(userId.Value);
+            Guid value = userId.Value;
+            User? user = _userService.GetUserById(value);
             Product? product = _productService.GetProductById(productId);
 
             if (product == null)
@@ -80,7 +81,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpGet("user")]
+        [HttpGet("users")]
         [Authorize]
         public ActionResult<IEnumerable<CommentResponse>> GetUserComments()
         {
@@ -97,7 +98,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("user")]
+        [HttpDelete("users")]
         [Authorize]
         public async Task<ActionResult> DeleteComment(Guid commentId)
         {

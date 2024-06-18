@@ -4,7 +4,7 @@ using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Product;
 using eEcomerce.BackEnd.Services.Category;
 using eEcomerce.BackEnd.Services.Product;
-using eEcomerce.BackEnd.Services.Users;
+using eEcomerce.BackEnd.Services.User;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -46,7 +46,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpGet("user")]
+        [HttpGet("users")]
         [Authorize]
         public ActionResult<IEnumerable<ProductResponse>> GetUserProductsList()
         {
@@ -63,7 +63,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpPost("user")]
+        [HttpPost("users")]
         [Authorize]
         public ActionResult<ProductResponse> CreateProduct(ProductRequest productRequest, char categoryLetter)
         {
@@ -88,7 +88,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(MapToDto(createdProduct));
         }
 
-        [HttpPut("user/{productId}")]
+        [HttpPut("users/{productId}")]
         [Authorize]
         public async Task<ActionResult<ProductResponse>> UpdateProduct(ProductRequest productRequest, char categoryLetter, Guid productId)
         {
@@ -124,7 +124,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(MapToDto(product));
         }
 
-        [HttpDelete("user/{productId}")]
+        [HttpDelete("users/{productId}")]
         [Authorize]
         public async Task<ActionResult<ProductResponse>> DeleteProduct(Guid productId)
         {

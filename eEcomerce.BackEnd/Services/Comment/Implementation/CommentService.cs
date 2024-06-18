@@ -1,8 +1,9 @@
 ﻿
+using eEcomerce.BackEnd.Services.DataAccessLayer;
+
 namespace eEcomerce.BackEnd.Services.Comment.Implementation;
 
 using eEcomerce.BackEnd.Entities.Comment;
-using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
 
 public class CommentService : ICommentService
 {
@@ -15,7 +16,7 @@ public class CommentService : ICommentService
 
     public Comment CreateComment(Comment comment)
     {
-        _commentGenericService.Insert(comment);
+        _commentGenericService.InsertAsync(comment);
         return comment;
     }
 
@@ -34,16 +35,16 @@ public class CommentService : ICommentService
 
     public Comment? GetCommentById(Guid commentId)
     {
-        return _commentGenericService.FilterByExpression(comment => comment.Id == commentId).FirstOrDefault();
+        return _commentGenericService.FilterByExpressionLinq(comment => comment.Id == commentId).FirstOrDefault();
     }
 
     public IEnumerable<Comment> GetCommentsByProduct(Guid productId)
     {
-        return _commentGenericService.FilterByExpression(comment => comment.ProductId == productId).ToList();
+        return _commentGenericService.FilterByExpressionLinq(comment => comment.ProductId == productId).ToList();
     }
 
     public IEnumerable<Comment> GetCommentsByUser(Guid userId)
     {
-        return _commentGenericService.FilterByExpression(comment => comment.UserId == userId).ToList();
+        return _commentGenericService.FilterByExpressionLinq(comment => comment.UserId == userId).ToList();
     }
 }

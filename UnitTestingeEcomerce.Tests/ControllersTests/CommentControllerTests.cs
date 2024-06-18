@@ -5,8 +5,7 @@ using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Comment;
 using eEcomerce.BackEnd.Services.Comment;
 using eEcomerce.BackEnd.Services.Product;
-using eEcomerce.BackEnd.Services.Users;
-
+using eEcomerce.BackEnd.Services.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

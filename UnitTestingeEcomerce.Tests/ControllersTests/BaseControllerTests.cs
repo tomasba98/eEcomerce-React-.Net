@@ -1,13 +1,11 @@
 ﻿using eEcomerce.BackEnd.Controllers;
 using eEcomerce.BackEnd.Entities.User;
-using eEcomerce.BackEnd.Services.Users;
-
 using Microsoft.AspNetCore.Http;
 
 using Moq;
 
 using System.Security.Claims;
-
+using eEcomerce.BackEnd.Services.User;
 using UnitTestingeEcomerce.Tests.Utils;
 
 namespace UnitTestingeEcomerce.Tests.ControllersTests;

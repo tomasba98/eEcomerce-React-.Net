@@ -8,7 +8,7 @@ using eEcomerce.BackEnd.Models.Product;
 using eEcomerce.BackEnd.Services.Order;
 using eEcomerce.BackEnd.Services.OrderProduct;
 using eEcomerce.BackEnd.Services.Product;
-using eEcomerce.BackEnd.Services.Users;
+using eEcomerce.BackEnd.Services.User;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -76,7 +76,7 @@ namespace eEcomerce.BackEnd.Controllers
             };
         }
 
-        [HttpGet("user")]
+        [HttpGet("users")]
         [Authorize]
         public ActionResult<IEnumerable<OrderResponse>> GetUserOrdersList()
         {
@@ -93,7 +93,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpGet("user/{orderId}")]
+        [HttpGet("users/{orderId}")]
         [Authorize]
         public ActionResult<IEnumerable<OrderProductResponse>> GetUserOrderProductsList(Guid orderId)
         {
@@ -110,7 +110,7 @@ namespace eEcomerce.BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpPost("user")]
+        [HttpPost("users")]
         [Authorize]
         public ActionResult<OrderResponse> CreateUserOrder(OrderRequest orderRequest)
         {

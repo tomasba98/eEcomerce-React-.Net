@@ -1,8 +1,9 @@
 ﻿
+using eEcomerce.BackEnd.Services.DataAccessLayer;
+
 namespace eEcomerce.BackEnd.Services.OrderProduct.Implementation;
 
 using eEcomerce.BackEnd.Entities.OrderProduct;
-using eEcomerce.BackEnd.Services.DataAccessLayer.IGenericService;
 
 public class OrderProductService : IOrderProductService
 {
@@ -15,18 +16,18 @@ public class OrderProductService : IOrderProductService
 
     public OrderProduct CreateOrderProduct(OrderProduct orderProduct)
     {
-        _orderProductGenericService.Insert(orderProduct);
+        _orderProductGenericService.InsertAsync(orderProduct);
         return orderProduct;
     }
 
     public OrderProduct? GetOrderProductById(Guid orderProductId)
     {
-        return _orderProductGenericService.FilterByExpression(op => op.Id == orderProductId).FirstOrDefault();
+        return _orderProductGenericService.FilterByExpressionLinq(op => op.Id == orderProductId).FirstOrDefault();
     }
 
     public IEnumerable<OrderProduct> GetOrderProducts_ByOrderId(Guid orderId)
     {
-        return _orderProductGenericService.FilterByExpression(op => op.OrderId == orderId).ToList();
+        return _orderProductGenericService.FilterByExpressionLinq(op => op.OrderId == orderId).ToList();
     }
 
 }
