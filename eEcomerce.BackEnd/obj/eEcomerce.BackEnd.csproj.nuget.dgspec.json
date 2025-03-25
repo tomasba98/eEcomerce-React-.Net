@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "S:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj": {}
+    "G:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj": {}
   },
   "projects": {
-    "S:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj": {
+    "G:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "S:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj",
+        "projectUniqueName": "G:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj",
         "projectName": "eEcomerce.BackEnd",
-        "projectPath": "S:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj",
+        "projectPath": "G:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj",
         "packagesPath": "C:\\Users\\tomas\\.nuget\\packages\\",
-        "outputPath": "S:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\obj\\",
+        "outputPath": "G:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -115,7 +116,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

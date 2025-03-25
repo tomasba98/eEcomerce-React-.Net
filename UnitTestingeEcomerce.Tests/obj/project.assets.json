@@ -12844,11 +12844,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\PROGRAMACION\\eEcomerce\\UnitTestingeEcomerce.Tests\\UnitTestingeEcomerce.Tests.csproj",
+      "projectUniqueName": "G:\\PROGRAMACION\\eEcomerce\\UnitTestingeEcomerce.Tests\\UnitTestingeEcomerce.Tests.csproj",
       "projectName": "UnitTestingeEcomerce.Tests",
-      "projectPath": "S:\\PROGRAMACION\\eEcomerce\\UnitTestingeEcomerce.Tests\\UnitTestingeEcomerce.Tests.csproj",
+      "projectPath": "G:\\PROGRAMACION\\eEcomerce\\UnitTestingeEcomerce.Tests\\UnitTestingeEcomerce.Tests.csproj",
       "packagesPath": "C:\\Users\\tomas\\.nuget\\packages\\",
-      "outputPath": "S:\\PROGRAMACION\\eEcomerce\\UnitTestingeEcomerce.Tests\\obj\\",
+      "outputPath": "G:\\PROGRAMACION\\eEcomerce\\UnitTestingeEcomerce.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -12859,14 +12859,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "S:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj": {
-              "projectPath": "S:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj"
+            "G:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj": {
+              "projectPath": "G:\\PROGRAMACION\\eEcomerce\\eEcomerce.BackEnd\\eEcomerce.BackEnd.csproj"
             }
           }
         }
@@ -12923,7 +12924,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -12932,7 +12933,7 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requiere AutoMapper (= 12.0.1), pero la versión AutoMapper 13.0.1 ya se resolvió.",
+      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 13.0.1 was resolved.",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net8.0"
