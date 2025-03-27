@@ -43,7 +43,7 @@ public class CommentControllerTests
     public void CreateComment_InvalidUserId_ReturnsBadRequest()
     {
         // Arrange
-        CommentRequest commentRequest = new() { Text = "Sample comment" };
+        CommentRequest commentRequest = new() { Text = "Sample comment", Rating = 0 };
         Guid productId = Guid.NewGuid();
         _userBuilder.WithId(Guid.Empty).SetupUserInHttpContext(); // Invalid user
 
@@ -62,7 +62,7 @@ public class CommentControllerTests
         Guid userId = Guid.NewGuid();
         _userBuilder.WithId(userId).SetupUserInHttpContext();
 
-        CommentRequest commentRequest = new() { Text = "Sample comment" };
+        CommentRequest commentRequest = new() { Text = "Sample comment", Rating = 0 };
         Guid productId = Guid.NewGuid();
 
         _mockUserService.Setup(x => x.GetUserById(userId)).Returns(new User());
@@ -83,7 +83,7 @@ public class CommentControllerTests
         Guid userId = Guid.NewGuid();
         _userBuilder.WithId(userId).WithUserName("testuser").WithPassword("password123").WithEmail("test@example.com").SetupUserInHttpContext();
 
-        CommentRequest commentRequest = new() { Text = "Sample comment" };
+        CommentRequest commentRequest = new() { Text = "Sample comment", Rating = 0 };
         Guid productId = Guid.NewGuid();
         User user = _userBuilder.Build();
         Product product = new();

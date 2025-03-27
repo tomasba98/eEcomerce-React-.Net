@@ -4,6 +4,7 @@ using eEcomerce.BackEnd.Entities.Product;
 using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Product;
 using eEcomerce.BackEnd.Services.Category;
+using eEcomerce.BackEnd.Services.Comment;
 using eEcomerce.BackEnd.Services.Product;
 using eEcomerce.BackEnd.Services.User;
 
@@ -22,6 +23,7 @@ namespace UnitTestingeEcomerce.Tests.ControllersTests
         private readonly Mock<ICategoryService> _mockCategoryService;
         private readonly Mock<IHttpContextAccessor> _mockHttpContextAccessor;
         private readonly Mock<IUserService> _mockUserService;
+        private readonly Mock<ICommentService> _mockCommentService;
         private readonly ProductController _controller;
         private readonly UserTesterBuilder _userBuilder;
 
@@ -31,11 +33,13 @@ namespace UnitTestingeEcomerce.Tests.ControllersTests
             _mockCategoryService = new Mock<ICategoryService>();
             _mockHttpContextAccessor = new Mock<IHttpContextAccessor>();
             _mockUserService = new Mock<IUserService>();
+            _mockCommentService = new Mock<ICommentService>();
             _controller = new ProductController(
                 _mockProductService.Object,
                 _mockHttpContextAccessor.Object,
                 _mockUserService.Object,
-                _mockCategoryService.Object
+                _mockCategoryService.Object,
+                _mockCommentService.Object
             );
             _userBuilder = new UserTesterBuilder(_mockHttpContextAccessor);
         }

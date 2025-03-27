@@ -44,7 +44,7 @@ namespace eEcomerce.BackEnd.Controllers
         [HttpGet("{productId}")]
         public ActionResult<ProductResponse> GetProduct(Guid productId)
         {
-            Product product = _productService.GetProductById(productId);
+            Product? product = _productService.GetProductById(productId);
             if (product == null)
                 return NotFound();
             ProductResponse result = MapToDto(product);
