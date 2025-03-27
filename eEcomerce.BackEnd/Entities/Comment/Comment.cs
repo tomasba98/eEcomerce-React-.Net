@@ -24,6 +24,9 @@ public class Comment : EntityBase
     public string Text { get; set; } = null!;
     public DateTime PostedAt { get; set; }
 
+    [Range(1, 5, ErrorMessage = "El rating debe estar entre 1 y 5.")]
+    public float Rating { get; set; }
+
     [Required]
     [Column("ProductId")]
     public Product Product { get; set; } = null!;

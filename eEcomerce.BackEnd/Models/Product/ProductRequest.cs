@@ -8,5 +8,7 @@ public class ProductRequest
 
     public decimal Price { get; set; }
 
+    public float Rating { get; set; }
+
     public string Brand { get; set; } = string.Empty;
 }

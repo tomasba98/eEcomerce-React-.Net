@@ -29,6 +29,13 @@ public interface ICommentService
     Task<bool> DeleteComment(Comment comment);
 
     /// <summary>
+    /// Retrieve the rating of a specific product.
+    /// </summary>
+    /// <param name="productId">The unique identifier of the product.</param>
+    /// <returns>Return the promedy rating of the product.</returns>
+    public float GetProductRating(Guid productId);
+
+    /// <summary>
     /// Retrieves all comments associated with a specific product.
     /// </summary>
     /// <param name="productId">The unique identifier of the product.</param>

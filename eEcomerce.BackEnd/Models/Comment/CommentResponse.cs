@@ -13,6 +13,8 @@ public class CommentResponse
     }
 
     public Guid CommentId { get; set; }
+
+    public float Rating { get; set; }
     public string Text { get; set; } = null!;
 
     public DateTime PostedAt { get; set; }

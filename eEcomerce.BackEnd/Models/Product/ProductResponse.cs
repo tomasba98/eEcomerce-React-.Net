@@ -11,5 +11,7 @@ public class ProductResponse
 
     public required string Brand { get; set; }
 
+    public float Rating { get; set; }
+
     public Guid CategoryId { get; set; }
 }

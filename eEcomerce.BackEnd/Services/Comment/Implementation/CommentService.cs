@@ -20,6 +20,16 @@ public class CommentService : ICommentService
         return comment;
     }
 
+    public float GetProductRating(Guid productId)
+    {
+        var ratings = _commentGenericService
+        .FilterByExpressionLinq(comment => comment.ProductId == productId)
+        .Select(comment => comment.Rating);
+
+        return ratings.Any() ? ratings.Average() : 0;
+    }
+
+
     public async Task<bool> DeleteComment(Comment comment)
     {
         try

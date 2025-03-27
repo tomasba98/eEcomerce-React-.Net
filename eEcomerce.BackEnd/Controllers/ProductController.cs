@@ -3,6 +3,7 @@ using eEcomerce.BackEnd.Entities.Product;
 using eEcomerce.BackEnd.Entities.User;
 using eEcomerce.BackEnd.Models.Product;
 using eEcomerce.BackEnd.Services.Category;
+using eEcomerce.BackEnd.Services.Comment;
 using eEcomerce.BackEnd.Services.Product;
 using eEcomerce.BackEnd.Services.User;
 
@@ -17,12 +18,14 @@ namespace eEcomerce.BackEnd.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly ICommentService _commentService;
 
-        public ProductController(IProductService productService, IHttpContextAccessor httpContextAccessor, IUserService userService, ICategoryService categoryService)
+        public ProductController(IProductService productService, IHttpContextAccessor httpContextAccessor, IUserService userService, ICategoryService categoryService, ICommentService commentService)
             : base(httpContextAccessor, userService)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _commentService = commentService;
         }
 
         private static ProductResponse MapToDto(Product product)
@@ -37,6 +40,19 @@ namespace eEcomerce.BackEnd.Controllers
                 Description = product.Description
             };
         }
+
+        [HttpGet("{productId}")]
+        public ActionResult<ProductResponse> GetProduct(Guid productId)
+        {
+            Product product = _productService.GetProductById(productId);
+            if (product == null)
+                return NotFound();
+            ProductResponse result = MapToDto(product);
+            result.Rating = _commentService.GetProductRating(productId);
+
+            return Ok(result);
+        }
+
 
         [HttpGet]
         public ActionResult<IEnumerable<ProductResponse>> GetProductsList()
