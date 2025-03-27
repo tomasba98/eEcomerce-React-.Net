@@ -1,1 +1,13 @@
 eecomerce.frontend
+
+# Archivos de configuración de Visual Studio
+.vs/
+*.suo
+.cache/
+
+# Archivos compilados y generados
+obj/
+bin/
+/UnitTestingeEcomerce.Tests/obj/Debug/net8.0/UnitTestingeEcomerce.Tests.csproj.AssemblyReference.cache
+/UnitTestingeEcomerce.Tests/obj/Debug/net8.0/UnitTestingeEcomerce.Tests.AssemblyInfoInputs.cache
+/UnitTestingeEcomerce.Tests/obj/Debug/net8.0/UnitTestingeEcomerce.Tests.AssemblyInfo.cs
