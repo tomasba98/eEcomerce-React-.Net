@@ -39,11 +39,11 @@ C# / ASP.NET Core
 - Swagger para documentación y pruebas de la API
 
 ## Diagramas UML
-Diagrama de clases de la arquitectura de la API.
+Diagrama de clases de la arquitectura de la API. <br/>
 ![ENTITIES!](UML/Entities.png)
 ![SERVICES!](UML/Services.png)
 ![CONTROLLERS!](UML/Controllers.png)
 
-DER de la base de Datos 
+DER de la base de Datos <br/>
 ![DER!](UML/DER.png)
 
