@@ -1,5 +1,5 @@
-# 🛒 eCommerce API <br/>
-Este es un proyecto de API RESTful para un sistema de eCommerce, desarrollado con ASP.NET Core en el backend y React en el frontend. La aplicación permite gestionar productos, comentarios y órdenes de compra, integrando autenticación y autorización para usuarios registrados.
+# 🛒 eCommerce API BackEnd <br/>
+Este es un proyecto de API RESTful para un sistema de eCommerce, desarrollado con ASP.NET Core en el backend. La aplicación permite gestionar productos, comentarios y órdenes de compra, integrando autenticación y autorización para usuarios registrados.
 
 ## 🧾 Descripción
 El backend está construido en C# con ASP.NET Core, utilizando Entity Framework Core como ORM y PostgreSQL como base de datos relacional. La API expone endpoints para la gestión de productos, comentarios, órdenes y usuarios, con distinción entre usuarios anónimos y registrados.
