@@ -1,23 +1,44 @@
-# eEcomerce API-REST 
+#🛒 eCommerce API
+Este es un proyecto de API RESTful para un sistema de eCommerce, desarrollado con ASP.NET Core en el backend y React en el frontend. La aplicación permite gestionar productos, comentarios y órdenes de compra, integrando autenticación y autorización para usuarios registrados.
 
-Proyecto de un eEcomerce. Proporciona la funcionalidad principal para administrar productos, órdenes y usuarios.
+##🧾 Descripción
+El backend está construido en C# con ASP.NET Core, utilizando Entity Framework Core como ORM y PostgreSQL como base de datos relacional. La API expone endpoints para la gestión de productos, comentarios, órdenes y usuarios, con distinción entre usuarios anónimos y registrados.
 
-## Descripción
+##🚀 Funcionalidades
+Usuarios anónimos: pueden visualizar productos y comentarios.
 
-El proyecto está desarrollado en C# utilizando ASP.NET Core como framework principal en el backend y React en el cliente. Utiliza una base de datos PostgreSql para almacenar la información de productos, órdenes y usuarios.
+Usuarios registrados:
 
-## Características principales
+-Publicar nuevos productos.
 
-- Gestión de productos: Crear, leer, actualizar y eliminar productos.
-- Gestión de órdenes: Crear, leer y actualizar órdenes de compra.
-- Gestión de usuarios: Autenticación de usuarios y gestión de sesiones.
+-Comentar productos.
 
-## Tecnologías utilizadas
+-Generar órdenes de compra.
 
-- C# / ASP.NET Core
-- Entity Framework Core (EF Core)
-- PostgreSql
-- Swagger para documentación de la API
+##🔐 Seguridad y Autenticación
+-Encriptación de contraseñas con SHA-256.
+
+-Autenticación y autorización mediante tokens JWT con expiración.
+
+-Protección de endpoints sensibles según roles de usuario.
+
+##🛠️ Arquitectura y buenas prácticas
+Inyección de dependencias para mayor desacoplamiento y testeo.
+
+-Implementación del patrón de diseño Generic Repository, mediante GenericService y GenericDao.
+
+-Separación clara de capas (Controller, Service, DAO).
+
+-Manejo de errores y respuestas estandarizadas.
+
+##📦 Tecnologías utilizadas
+C# / ASP.NET Core
+
+-Entity Framework Core
+
+-PostgreSQL
+
+-Swagger para documentación y pruebas de la API
 
 ## Diagramas UML
 Diagrama de clases de la arquitectura de la API.
