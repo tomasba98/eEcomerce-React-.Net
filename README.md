@@ -5,10 +5,10 @@ Este es un proyecto de backend para un sistema de eCommerce, desarrollado con AS
 El backend está construido en C# con ASP.NET Core, utilizando Entity Framework Core como ORM y PostgreSQL como base de datos relacional. La API expone endpoints para la gestión de productos, comentarios, órdenes y usuarios, con distinción entre usuarios anónimos y registrados.
 
 ## 🚀 Funcionalidades
-###Usuarios anónimos: 
+### Usuarios anónimos: 
 - pueden visualizar productos y comentarios.
 
-###Usuarios registrados:
+### Usuarios registrados:
 - Publicar nuevos productos.
 - Comentar productos.
 - Generar órdenes de compra.
