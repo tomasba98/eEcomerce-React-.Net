@@ -1,30 +1,30 @@
-# eEcomerce API-REST 
+# eEcommerce API-REST
 
-Proyecto de un eEcomerce. Proporciona la funcionalidad principal para administrar productos, órdenes y usuarios.
+Ecommerce project providing core functionality to manage products, orders, and users.
 
-## Descripción
+## Description
 
-El proyecto está desarrollado en C# utilizando ASP.NET Core como framework principal en el backend y React en el cliente. Utiliza una base de datos PostgreSql para almacenar la información de productos, órdenes y usuarios.
+The project is developed in C# using ASP.NET Core as the main backend framework and React on the client side. It uses a PostgreSQL database to store information about products, orders, and users.
 
-## Características principales
+## Key Features
 
-- Gestión de productos: Crear, leer, actualizar y eliminar productos.
-- Gestión de órdenes: Crear, leer y actualizar órdenes de compra.
-- Gestión de usuarios: Autenticación de usuarios y gestión de sesiones.
+- Product management: Create, read, update, and delete products.
+- Order management: Create, read, and update purchase orders.
+- User management: User authentication and session management.
 
-## Tecnologías utilizadas
+## Technologies Used
 
 - C# / ASP.NET Core
 - Entity Framework Core (EF Core)
-- PostgreSql
-- Swagger para documentación de la API
+- PostgreSQL
+- Swagger for API documentation
 
-## Diagramas UML
-Diagrama de clases de la arquitectura de la API.
+## UML Diagrams
+Class diagram of the API architecture.
 ![ENTITIES!](UML/Entities.png)
 ![SERVICES!](UML/Services.png)
 ![CONTROLLERS!](UML/Controllers.png)
 
-DER de la base de Datos 
+DER of the data base.
 ![DER!](UML/DER.png)
 
